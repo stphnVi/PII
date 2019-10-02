@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class FileChooser_2 extends Application {
 
-    // launch the application
+    /// launch the application
     public void start(Stage stage) {
         System.out.println("sirve");
     }

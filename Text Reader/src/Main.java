@@ -17,6 +17,8 @@ public class Main extends Application {
         fxmlLoader.setRoot(root);
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
+        //Controller a = new Controller();
+        //a.FileChooserButton(primaryStage);
 
 
         primaryStage.setScene(scene);

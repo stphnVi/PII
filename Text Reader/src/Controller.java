@@ -1,18 +1,74 @@
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 
 public class Controller {
 
     @FXML
     ComboBox combo;
+    @FXML
+    Button UploadFiles;
+    Stage stage;
 
-    void ComboBoxValues(){
-        combo.getItems().removeAll(combo.getItems());
-        combo.getItems().removeAll("Phrases");
-        combo.getSelectionModel().select("Word");
+    public void ComboBoxValues(ActionEvent event) {
+        combo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                combo.getItems().removeAll(combo.getItems());
+                combo.getItems().removeAll("Phrases");
+                combo.getSelectionModel().select("Word");
+
+            }
+        });
+    }
+
+    public void FileChooserButton(ActionEvent event) {
+
+        UploadFiles.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Upload Files");
+                try {
+
+                    FileChooser fil_chooser = new FileChooser();
+                    File file = fil_chooser.showOpenDialog(stage);
+
+                    if (file != null) {
+                        String tempPath = file.getCanonicalPath().toLowerCase();
+                        if ((tempPath.endsWith(".txt") || tempPath.endsWith(".pdf")) || tempPath.endsWith(".docx")){
+
+                        }else{
+                            Alert extentionError = new Alert(Alert.AlertType.ERROR);
+                            extentionError.setTitle("Error");
+                            extentionError.setContentText("Invalid file extention \n Program only allows .txt/ .pdf/ .docx");
+                            extentionError.show();
+                        }
+
+                        System.out.println((file.getAbsolutePath())
+                                + "  selected");
+
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("error");
+                }
+            }
+        });
     }
 
 
+
+
 }
+

@@ -39,7 +39,19 @@ public class Controller {
 
                     if (file != null) {
                         String tempPath = file.getCanonicalPath().toLowerCase();
-                        if ((tempPath.endsWith(".txt") || tempPath.endsWith(".pdf")) || tempPath.endsWith(".docx")){
+                        if (tempPath.endsWith(".txt")){
+                            System.out.println("file TXT");
+                            Read read= new Read();
+                            read.leer(file.getAbsolutePath(), "txt");
+                        }else if(tempPath.endsWith(".pdf")){
+                            System.out.println("file PDF");
+                            Read read= new Read();
+                            read.leer(file.getAbsolutePath(), "pdf");
+                        }else if (tempPath.endsWith(".docx")){
+                            //NEWWWW
+                            System.out.println("file DOCX");
+                            Read read= new Read();
+                            read.leer(file.getAbsolutePath(), "docx");
 
                         }else{
                             Alert extentionError = new Alert(Alert.AlertType.ERROR);
@@ -48,8 +60,7 @@ public class Controller {
                             extentionError.show();
                         }
 
-                        System.out.println((file.getAbsolutePath())
-                                + "  selected");
+                        System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
 
                     }
 

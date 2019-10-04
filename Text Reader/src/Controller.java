@@ -6,31 +6,24 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Controller {
 
     @FXML
-    ComboBox combo;
+    public ComboBox combo;
     @FXML
     Button UploadFiles;
     Stage stage;
 
-    public void ComboBoxValues(ActionEvent event) {
-        combo.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                combo.getItems().removeAll(combo.getItems());
-                combo.getItems().removeAll("Phrases");
-                combo.getSelectionModel().select("Word");
+    public void ComboOptions(){
+        combo.setEditable(true);
+        ObservableList<String> textType = FXCollections.observableArrayList("Frase", "Palabra");
+        combo.getItems().addAll(textType);
 
-            }
-        });
     }
 
     public void FileChooserButton(ActionEvent event) {
@@ -61,7 +54,10 @@ public class Controller {
                     }
 
                 } catch (Exception e) {
-                    System.out.println("error");
+                    Alert nullError = new Alert(Alert.AlertType.ERROR);
+                    nullError.setTitle("Error");
+                    nullError.setContentText("El archivo seleccionado es nulo");
+                    nullError.show();
                 }
             }
         });

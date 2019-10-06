@@ -8,6 +8,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -30,6 +32,22 @@
                               <Font size="13.0" />
                            </font>
                         </TextField>
+                        <ScrollPane layoutX="39.0" layoutY="276.0" prefHeight="255.0" prefWidth="497.0">
+                           <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="259.0" prefWidth="501.0">
+                                 <children>
+                                    <TableView fx:id="InfoTable" layoutX="-3.0" layoutY="-4.0" prefHeight="247.0" prefWidth="489.0">
+                                      <columns>
+                                        <TableColumn fx:id="name" prefWidth="150.0" text="Nombre" />
+                                        <TableColumn fx:id="size" prefWidth="150.0" text="Tamaño" />
+                                          <TableColumn fx:id="date" prefWidth="150.0" text="Fecha" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                        <ComboBox fx:id="orderBy" layoutX="555.0" layoutY="276.0" onShown="#OrderOptions" prefWidth="150.0" promptText="Order Search By" />
                      </children>
                   </AnchorPane>
               </content>

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -14,16 +15,39 @@ import java.io.File;
 public class Controller {
 
     @FXML
-    public ComboBox combo;
+    ComboBox<String> combo;
     @FXML
     Button UploadFiles;
+    @FXML
+    ComboBox<String> orderBy;
+    @FXML
     Stage stage;
+    @FXML
+    TableView<String> InfoTable;
+
+    int temp1;
+    int temp2;
+
 
     public void ComboOptions(){
-        combo.setEditable(true);
-        ObservableList<String> textType = FXCollections.observableArrayList("Frase", "Palabra");
-        combo.getItems().addAll(textType);
+        if(temp1 == 0){
+            combo.setEditable(true);
+            ObservableList<String> textType = FXCollections.observableArrayList("Frase", "Palabra");
+            combo.getItems().addAll(textType);
+            combo.setEditable(false);
+            temp1++;
+        }
 
+    }
+
+    public void OrderOptions(){
+        if(temp2 ==0){
+            orderBy.setEditable(true);
+            ObservableList<String> textType = FXCollections.observableArrayList("Nombre", "Tamaño", "Fecha");
+            orderBy.getItems().addAll(textType);
+            orderBy.setEditable(false);
+            temp2++;
+        }
     }
 
     public void FileChooserButton(ActionEvent event) {

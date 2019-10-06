@@ -1,11 +1,12 @@
 import javafx.scene.control.Alert;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.text.PDFTextStripper;
+//import org.apache.pdfbox.pdmodel.PDDocument;
+//import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.File;
 import java.io.FileReader;
 
 public class Read {
+
 
     Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -34,7 +35,7 @@ public class Read {
 
         if (b == "pdf") {
 
-            try (PDDocument doc = PDDocument.load(new File(x))) {
+            /*try (PDDocument doc = PDDocument.load(new File(x))) {
                 PDFTextStripper stripper = new PDFTextStripper();
                 String text = stripper.getText(doc);
                 System.out.println("Text size: " + text.length());
@@ -42,7 +43,7 @@ public class Read {
             } catch (Exception e) {
                 alert.setContentText("no se pude leer el archivo");
                 alert.show();
-            }
+            }*/
 
         //TXT
 

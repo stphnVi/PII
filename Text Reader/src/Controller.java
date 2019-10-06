@@ -3,13 +3,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.xml.soap.Text;
 import java.io.File;
 
 public class Controller {
@@ -24,9 +24,12 @@ public class Controller {
     Stage stage;
     @FXML
     TableView<String> InfoTable;
+    @FXML
+    VBox files;
 
     int temp1;
     int temp2;
+
 
 
     public void ComboOptions(){
@@ -64,15 +67,18 @@ public class Controller {
                     if (file != null) {
                         String tempPath = file.getCanonicalPath().toLowerCase();
                         if (tempPath.endsWith(".txt")){
+                            addFile(file.getName(), new TextField());
                             System.out.println("file TXT");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "txt");
                         }else if(tempPath.endsWith(".pdf")){
+                            addFile(file.getName(), new TextField());
                             System.out.println("file PDF");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "pdf");
                         }else if (tempPath.endsWith(".docx")){
                             //NEWWWW
+                            addFile(file.getName(), new TextField());
                             System.out.println("file DOCX");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "docx");
@@ -96,6 +102,14 @@ public class Controller {
                 }
             }
         });
+    }
+
+    public void addFile(String fileName, TextField archivo){
+        int length = (fileName.length())+500;
+        archivo.setPrefSize(length,40);
+        archivo.setText(fileName);
+        archivo.setEditable(false);
+        files.getChildren().addAll(archivo);
     }
 
 

@@ -4,12 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.xml.soap.Text;
 import java.io.File;
 
 public class Controller {
@@ -26,7 +24,10 @@ public class Controller {
     TableView<String> InfoTable;
     @FXML
     VBox files;
-
+    @FXML
+    Button search;
+    @FXML
+    TextField txt;
     int temp1;
     int temp2;
 
@@ -40,8 +41,20 @@ public class Controller {
             combo.setEditable(false);
             temp1++;
         }
+        /***
+         * @see
+         * Cuando el usuario busca, la palabra se envía a la clase conversor
+         */
+        search.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Conversor conv= new Conversor();
+                conv.Trans(txt.getText());
 
+            }
+        });
     }
+
 
     public void OrderOptions(){
         if(temp2 ==0){

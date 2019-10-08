@@ -1,7 +1,8 @@
 import javafx.scene.control.Alert;
-//import org.apache.pdfbox.pdmodel.PDDocument;
-//import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
@@ -35,15 +36,20 @@ public class Read {
 
         if (b == "pdf") {
 
-            /*try (PDDocument doc = PDDocument.load(new File(x))) {
+            try (PDDocument doc = PDDocument.load(new File(x))) {
                 PDFTextStripper stripper = new PDFTextStripper();
                 String text = stripper.getText(doc);
+
+                Conversor conv= new Conversor();
+                conv.Trans(x);
+
+
                 System.out.println("Text size: " + text.length());
                 System.out.println("name Document: " + x);
             } catch (Exception e) {
                 alert.setContentText("no se pude leer el archivo");
                 alert.show();
-            }*/
+            }
 
         //TXT
 
@@ -52,15 +58,19 @@ public class Read {
             try{
             String cadena;
             FileReader f = new FileReader(x);
-            System.out.println(x.length());
-            /*
+           //System.out.println(x.length());
             BufferedReader w = new BufferedReader(f);
+
+
             while((cadena = w.readLine())!=null) {
-                System.out.println(cadena);
+                //System.out.println(cadena);
             }
             w.close();
 
-             */
+            Conversor conv= new Conversor();
+            conv.Trans(x);
+
+
             }catch(Exception e){
                 alert.setContentText("no se pude leer el archivo");
                 alert.show();
@@ -72,29 +82,6 @@ public class Read {
 
         } else {
 
-/*
-            try {
-
-                file = new File(x);
-                FileInputStream fis = new FileInputStream(file.getAbsolutePath());
-                HWPFDocument document = new HWPFDocument(fis);
-                extractor = new WordExtractor(document);
-                String[] fileData = extractor.getParagraphText();
-                for (int i = 0; i < fileData.length; i++)
-                {
-                    if (fileData[i] != null)
-                        System.out.println(fileData[i]);
-                }
-            }
-            catch (Exception e)
-            {
-                alert.setContentText("no se pude leer el archivo");
-                alert.show();
-            }
-
- */
         }
-
-
     }
 }

@@ -12,22 +12,14 @@ import java.io.File;
 
 public class Controller {
 
-    @FXML
-    ComboBox<String> combo;
-    @FXML
-    Button UploadFiles;
-    @FXML
-    ComboBox<String> orderBy;
-    @FXML
-    Stage stage;
-    @FXML
-    TableView<String> InfoTable;
-    @FXML
-    VBox files;
-    @FXML
-    Button search;
-    @FXML
-    TextField txt;
+    @FXML ComboBox<String> combo;
+    @FXML Button UploadFiles;
+    @FXML ComboBox<String> orderBy;
+    @FXML Stage stage;
+    @FXML TableView<String> InfoTable;
+    @FXML VBox files;
+    @FXML Button search;
+    @FXML TextField txt;
     int temp1;
     int temp2;
 
@@ -48,8 +40,11 @@ public class Controller {
         search.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                /*
                 Conversor conv= new Conversor();
                 conv.Trans(txt.getText());
+
+                 */
 
             }
         });
@@ -104,10 +99,13 @@ public class Controller {
                         }
 
                         System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
+                        InfoTable a = new InfoTable();
+                        a.AddName();
 
                     }
 
                 } catch (Exception e) {
+                    System.out.println(e);
                     Alert nullError = new Alert(Alert.AlertType.ERROR);
                     nullError.setTitle("Error");
                     nullError.setContentText("El archivo seleccionado es nulo");

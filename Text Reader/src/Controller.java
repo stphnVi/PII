@@ -4,11 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.xml.soap.Text;
 import java.io.File;
 
 public class Controller {
@@ -22,13 +23,9 @@ public class Controller {
     @FXML
     Stage stage;
     @FXML
-    VBox files;
-    VBox name;
-    VBox size;
-    VBox date;
+    TableView<String> InfoTable;
     @FXML
-    Pane root;
-    VBox tableBase;
+    VBox files;
 
     int temp1;
     int temp2;
@@ -56,7 +53,6 @@ public class Controller {
         }
     }
 
-
     public void FileChooserButton(ActionEvent event) {
 
         UploadFiles.setOnAction(new EventHandler<ActionEvent>() {
@@ -71,15 +67,18 @@ public class Controller {
                     if (file != null) {
                         String tempPath = file.getCanonicalPath().toLowerCase();
                         if (tempPath.endsWith(".txt")){
+                            addFile(file.getName(), new TextField());
                             System.out.println("file TXT");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "txt");
                         }else if(tempPath.endsWith(".pdf")){
+                            addFile(file.getName(), new TextField());
                             System.out.println("file PDF");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "pdf");
                         }else if (tempPath.endsWith(".docx")){
                             //NEWWWW
+                            addFile(file.getName(), new TextField());
                             System.out.println("file DOCX");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "docx");
@@ -90,9 +89,7 @@ public class Controller {
                             extentionError.setContentText("Invalid file extention \n Program only allows .txt/ .pdf/ .docx");
                             extentionError.show();
                         }
-                        addFile(file.getName(), new TextField());
-                        InfoTable A = new InfoTable();
-                        A.addInfo(file);
+
                         System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
 
                     }

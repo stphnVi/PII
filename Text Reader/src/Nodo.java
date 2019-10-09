@@ -7,13 +7,16 @@ public class Nodo {
         this.dato = dato;
         this.siguiente = null;
     }
-    Nodo VerSig() {
+    Nodo VerSig()
+    {
         return this.siguiente;
     }
     void agregar(Nodo n) {
+
         this.siguiente = n;
     }
     Object VerDato() {
+
         return this.dato;
     }
 

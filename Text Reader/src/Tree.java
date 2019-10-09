@@ -1,6 +1,6 @@
-public class Arbol {
+public class Tree {
     NodoArbol raiz;
-    public Arbol(){
+    public Tree(){
         raiz = null;
     }
 
@@ -11,7 +11,7 @@ public class Arbol {
      * @param i
      * i es indice
      * @param fruta
-     * i el nuevo nodo que insertaré
+     * fruta el nuevo nodo que insertaré
      */
     public void Insertar(int i, Object fruta){
         NodoArbol n = new NodoArbol(i);

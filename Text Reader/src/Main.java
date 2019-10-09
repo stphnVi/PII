@@ -1,11 +1,18 @@
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    @FXML
+    VBox name;
+    VBox size;
+    VBox date;
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -17,6 +24,8 @@ public class Main extends Application {
         fxmlLoader.setRoot(root);
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
+
+
 
 
         primaryStage.setScene(scene);

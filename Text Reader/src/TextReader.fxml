@@ -8,8 +8,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -37,13 +35,21 @@
                            <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="259.0" prefWidth="501.0">
                                  <children>
-                                    <TableView fx:id="InfoTable" layoutX="-3.0" layoutY="-4.0" prefHeight="247.0" prefWidth="489.0">
-                                      <columns>
-                                        <TableColumn fx:id="name" prefWidth="150.0" text="Nombre" />
-                                        <TableColumn fx:id="size" prefWidth="150.0" text="Tamaño" />
-                                          <TableColumn fx:id="date" prefWidth="150.0" text="Fecha" />
-                                      </columns>
-                                    </TableView>
+                                    <VBox fx:id="name" layoutX="-7.0" prefHeight="241.0" prefWidth="167.0">
+                                       <children>
+                                          <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="182.0" text="Nombre" />
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="size" layoutX="160.0" prefHeight="243.0" prefWidth="167.0">
+                                       <children>
+                                          <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="211.0" text="Tamaño" />
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="date" layoutX="327.0" prefHeight="241.0" prefWidth="167.0">
+                                       <children>
+                                          <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="167.0" text="Fecha" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </AnchorPane>
                            </content>

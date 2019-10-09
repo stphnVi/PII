@@ -1,12 +1,4 @@
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
 import java.io.File;
@@ -19,6 +11,7 @@ import java.util.Date;
 
 public class InfoTable extends Controller {
 
+    static Lista matriz = new Lista();      //matriz que guarda los atributos de los archivos
 
     public void addInfo(File file, VBox name, VBox size, VBox date) throws IOException {
         System.out.println("in");
@@ -41,6 +34,14 @@ public class InfoTable extends Controller {
         String formatted = simpleDateFormat.format( new Date( time.toMillis() ) );
         newDate.setText(formatted);
         date.getChildren().add(newDate);
+
+        Lista datos = new Lista();  //datos del archivo
+
+        datos.agregarDelante(newName);
+        datos.agregarDelante(newSize);
+        datos.agregarDelante(newDate);
+
+        matriz.agregarDelante(datos);   //agrega una fila dentro de la matriz
 
 
 

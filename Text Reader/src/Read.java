@@ -1,6 +1,6 @@
 import javafx.scene.control.Alert;
-//import org.apache.pdfbox.pdmodel.PDDocument;
-//import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -36,7 +36,7 @@ public class Read {
 
         if (b == "pdf") {
 
-            /*try (PDDocument doc = PDDocument.load(new File(x))) {
+            try (PDDocument doc = PDDocument.load(new File(x))) {
                 PDFTextStripper stripper = new PDFTextStripper();
                 String text = stripper.getText(doc);
 
@@ -75,7 +75,7 @@ public class Read {
                 alert.setContentText("no se pude leer el archivo");
                 alert.show();
 
-            }*/
+            }
 
 
         //DOCX(solucionar librería)

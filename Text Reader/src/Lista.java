@@ -85,5 +85,16 @@ public class Lista {
         this.tamaño = tamaño;
     }
 
+    public void ordenar(){
+
+    }
+
+    public void radixSort(int i, int j){       //i es el indice de las filas, depende del archivo que se ordene
+                                               //j es el indice de columnas que se debe ordenar (nombre = 0, tamaño = 1, fecha = 2)
+
+    }
+
 }
+
+
 

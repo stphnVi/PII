@@ -23,9 +23,7 @@ public class Controller {
     Stage stage;
     @FXML
     VBox files;
-    @FXML
     VBox name;
-    @FXML
     VBox size;
     VBox date;
     @FXML
@@ -94,16 +92,16 @@ public class Controller {
                         }
                         addFile(file.getName(), new TextField());
                         InfoTable A = new InfoTable();
-                        A.add();
+                        A.addInfo(file);
                         System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
 
                     }
 
                 } catch (Exception e) {
-                    /*Alert nullError = new Alert(Alert.AlertType.ERROR);
+                    Alert nullError = new Alert(Alert.AlertType.ERROR);
                     nullError.setTitle("Error");
                     nullError.setContentText("El archivo seleccionado es nulo");
-                    nullError.show();*/
+                    nullError.show();
                 }
             }
         });

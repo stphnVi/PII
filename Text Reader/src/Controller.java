@@ -26,8 +26,11 @@ public class Controller {
     TableView<String> InfoTable;
     @FXML
     VBox files;
-    VBox name;
+    @FXML
+    public VBox name;
+    @FXML
     VBox size;
+    @FXML
     VBox date;
 
     int temp1;
@@ -70,18 +73,14 @@ public class Controller {
                     if (file != null) {
                         String tempPath = file.getCanonicalPath().toLowerCase();
                         if (tempPath.endsWith(".txt")){
-                            addFile(file.getName(), new TextField());
                             System.out.println("file TXT");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "txt");
                         }else if(tempPath.endsWith(".pdf")){
-                            addFile(file.getName(), new TextField());
                             System.out.println("file PDF");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "pdf");
                         }else if (tempPath.endsWith(".docx")){
-                            //NEWWWW
-                            addFile(file.getName(), new TextField());
                             System.out.println("file DOCX");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "docx");
@@ -94,7 +93,7 @@ public class Controller {
                         }
                         addFile(file.getName(), new TextField());
                         InfoTable A = new InfoTable();
-                        A.addInfo(file);
+                        A.addInfo(file, name, size, date);
                         System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
                     }
 
@@ -109,6 +108,7 @@ public class Controller {
     }
 
     public void addFile(String fileName, TextField archivo){
+        System.out.println("add");
         int length = (fileName.length())+500;
         archivo.setPrefSize(length,40);
         archivo.setText(fileName);

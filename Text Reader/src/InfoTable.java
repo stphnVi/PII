@@ -1,6 +1,7 @@
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,19 +19,19 @@ import java.util.Date;
 
 public class InfoTable extends Controller {
 
-    private final ObservableList<String> data =
-            FXCollections.observableArrayList(
-                    new String("a@example.com"),
-                    new String("b@example.com")
-            );
-    public void addInfo(File file) throws IOException {
+
+    public void addInfo(File file, VBox name, VBox size, VBox date) throws IOException {
+        System.out.println("in");
         TextField newName = new TextField();
         newName.setText(file.getName());
+        System.out.println(name);
         name.getChildren().add(newName);
 
         TextField newSize = new TextField();
-        double size = (file.length()/1024);
-        newSize.setText(size + "kb");
+        double num = (file.length()/1024);
+        newSize.setText(num + "kb");
+        size.getChildren().add(newSize);
+
 
         TextField newDate =  new TextField();
         BasicFileAttributes atributes = Files.readAttributes(file.toPath(), BasicFileAttributes.class); //atributos del archivo
@@ -46,7 +47,6 @@ public class InfoTable extends Controller {
 
 
     }
-
 
 
 }

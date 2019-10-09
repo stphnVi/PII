@@ -26,6 +26,9 @@ public class Controller {
     TableView<String> InfoTable;
     @FXML
     VBox files;
+    VBox name;
+    VBox size;
+    VBox date;
 
     int temp1;
     int temp2;
@@ -89,9 +92,10 @@ public class Controller {
                             extentionError.setContentText("Invalid file extention \n Program only allows .txt/ .pdf/ .docx");
                             extentionError.show();
                         }
-
+                        addFile(file.getName(), new TextField());
+                        InfoTable A = new InfoTable();
+                        A.addInfo(file);
                         System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
-
                     }
 
                 } catch (Exception e) {

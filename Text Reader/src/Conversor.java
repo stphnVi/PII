@@ -36,11 +36,13 @@ public class Conversor {
             /*
             separar las letras de la linea para poder insertar en el arbol
              */
+            int i = 0;
             while (st.hasMoreTokens())
             {
                 s2 = st.nextToken();
                 numTokens++;
-                arbol.Insertar(numTokens, s2);
+                arbol.Insertar(numTokens, s2.hashCode());
+                i++;
             }
         }
         catch(Exception e){
@@ -51,11 +53,14 @@ public class Conversor {
              */
 
             try{
+
+
+                /*
                 System.out.println("parte Izquierda del Arbol(raiz no se lee)");
                 arbol.Recorrer(arbol.raiz.Izquierda);
                 System.out.println("parte Derecha del Arbol(raiz no se lee)");
                 arbol.Recorrer(arbol.raiz.Derecha);
-
+                */
                 System.out.println("Todo el Arbol");
                 arbol.Recorrer(arbol.raiz);
                 if( null != fr ){

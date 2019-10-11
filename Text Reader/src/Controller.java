@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 import java.io.File;
 
 public class Controller {
+    static String busqueda= "";
+    static int HashVal = 0;
 
     @FXML ComboBox<String> combo;
     @FXML Button UploadFiles;
@@ -40,11 +42,11 @@ public class Controller {
         search.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                /*
-                Conversor conv= new Conversor();
-                conv.Trans(txt.getText());
+                busqueda= txt.getText();
+                HashVal = busqueda.hashCode();
 
-                 */
+
+
 
             }
         });

@@ -24,7 +24,13 @@ public class Main extends Application {
         primaryStage.show();
 
 
+        String D="hola";
+        String A= "aloh";
 
+       System.out.println(D.hashCode());
+       System.out.println(A.hashCode());
+
+        System.out.println(D.compareTo(A) );
 
     }
 

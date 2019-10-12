@@ -5,8 +5,8 @@
  */
 public class Lista {
 
-    private Nodo cabeza;
-    private int tamaño;
+    Nodo cabeza;
+    int tamaño;
 
     /***
      * @see
@@ -33,6 +33,33 @@ public class Lista {
             cabeza = nuevo;
         }
         tamaño++;
+    }
+
+    void addLast(Object e) {     //arreglar
+
+        if (this.cabeza != null) {
+
+            Nodo temp = cabeza;
+            while (temp.siguiente != null) {
+                temp = temp.siguiente;
+            }
+            Nodo n = new Nodo(e);
+            temp.siguiente = n;
+            n.prev = temp;
+            tamaño++;
+
+        } else {
+            cabeza = new Nodo(e);
+            tamaño++;
+        }
+
+    }
+    void printList() {
+        Nodo temp = cabeza;
+        while (temp != null) {
+            System.out.println(temp.dato);
+            temp = temp.siguiente;
+        }
     }
 
     /***
@@ -77,10 +104,6 @@ public class Lista {
      *
      */
 
-
-    public int getTamaño() {
-        return tamaño;
-    }
     public void setTamaño(int tamaño) {
         this.tamaño = tamaño;
     }
@@ -89,10 +112,49 @@ public class Lista {
 
     }
 
-    public void radixSort(int i, int j){       //i es el indice de las filas, depende del archivo que se ordene
-                                               //j es el indice de columnas que se debe ordenar (nombre = 0, tamaño = 1, fecha = 2)
+    public void sort() {
+        if (tamaño > 1) {
+            boolean wasChanged;
 
+
+            do {
+                Nodo current =cabeza;
+                Nodo previous = null;
+                Nodo next = cabeza.siguiente;
+                wasChanged = false;
+
+                while (next != null) {
+                    if (current.dato.hashCode() > next.dato.hashCode()) {
+
+                        wasChanged = true;
+
+                        if (previous != null) {
+                            Nodo sig = next.siguiente;
+
+                            previous.siguiente = next;
+                            next.siguiente = current;
+                            current.siguiente = sig;
+                        } else {
+                            Nodo sig = next.siguiente;
+
+                            cabeza = next;
+                            next.siguiente = current;
+                            current.siguiente = sig;
+                        }
+
+                        previous = next;
+                        next = current.siguiente;
+                    } else {
+                        previous = current;
+                        current = next;
+                        next = next.siguiente;
+                    }
+                }
+            } while (wasChanged);
+        }
     }
+
+
 
 }
 

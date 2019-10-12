@@ -25,12 +25,23 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
 
+        QuickSort A = new QuickSort();
+        Lista B = new Lista();
+        B.addLast("hola");
+        B.addLast("adios");
+        B.printList();
+        //int[] C = new int[]{5,2,3};
+        //A.quicksort(C, 0, 0);
+        BubbleSort C = new BubbleSort();
+        B.sort();
+        B.printList();
+
 
 
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Proyecto II - Text Reader");
-        primaryStage.show();
+        //primaryStage.show();
 
 
 

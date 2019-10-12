@@ -124,7 +124,10 @@ public class Lista {
                 wasChanged = false;
 
                 while (next != null) {
-                    if (current.dato.hashCode() > next.dato.hashCode()) {
+                    char character_1 = ((String) current.dato).charAt(0);
+                    char character_2 = ((String) next.dato).charAt(0);
+
+                    if ( Character.hashCode(character_1) > Character.hashCode(character_2)) {
 
                         wasChanged = true;
 

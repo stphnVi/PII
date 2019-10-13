@@ -63,7 +63,7 @@ public class Read {
 
 
             while((cadena = w.readLine())!=null) {
-                //System.out.println(cadena);
+                System.out.println(cadena);
             }
             w.close();
 

@@ -23,15 +23,6 @@ public class Main extends Application {
         primaryStage.setTitle("Proyecto II - Text Reader");
         primaryStage.show();
 
-
-        String D="hola";
-        String A= "aloh";
-
-       System.out.println(D.hashCode());
-       System.out.println(A.hashCode());
-
-        System.out.println(D.compareTo(A) );
-
     }
 
 

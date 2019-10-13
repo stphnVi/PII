@@ -9,6 +9,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.StringTokenizer;
 
 public class Controller {
     static String busqueda= "";
@@ -44,10 +45,13 @@ public class Controller {
             public void handle(ActionEvent event) {
                 busqueda= txt.getText();
                 HashVal = busqueda.hashCode();
+                StringTokenizer st = new StringTokenizer(busqueda);
+                String sa = "";
 
-
-
-
+                while (st.hasMoreTokens()){
+                    sa = st.nextToken();
+                    System.out.println("\n"+sa);
+                }
             }
         });
     }

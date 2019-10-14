@@ -13,6 +13,11 @@ public class InfoTable extends Controller {
 
     static Lista matriz = new Lista();      //matriz que guarda los atributos de los archivos
 
+    // [[nombre, tamaño, fecha],  nombre = matriz[0][0], [1][0], [2][0]
+    //  [nombre, tamaño, fecha],  tamaño = matriz[0][1], [1][1], [2][1]
+    //  [nombre, tamaño, fecha]]  fecha  = matriz[0][2], [1][2], [2][2]
+
+
     public void addInfo(File file, VBox name, VBox size, VBox date) throws IOException {
         System.out.println("in");
         TextField newName = new TextField();
@@ -37,13 +42,13 @@ public class InfoTable extends Controller {
 
         Lista datos = new Lista();  //datos del archivo
 
-        datos.agregarDelante(newName);
-        datos.agregarDelante(newSize);
-        datos.agregarDelante(newDate);
+        datos.addLast(file.getName());
+        datos.addLast(file.length()/1024);
+        datos.addLast(formatted);
 
-        matriz.agregarDelante(datos);   //agrega una fila dentro de la matriz
-
-
+        matriz.addLast(datos);//agrega una fila dentro de la matriz
+        System.out.println("matriz");
+        //matriz.printList();
 
 
 

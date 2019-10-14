@@ -26,11 +26,12 @@ public class Main extends Application {
         primaryStage.setScene(scene);
 
         Lista B = new Lista();
-        B.addLast("hola");
-        B.addLast("adios");
-        B.printList();
-        B.sort();
-        B.printList();
+        B.addLast(3);
+        B.addLast(1);
+        QuickSort A = new QuickSort();
+        B.radixsort(B);
+        B.printList(B);
+
 
 
 

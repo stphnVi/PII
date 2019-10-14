@@ -11,8 +11,8 @@ public class QuickSort extends Lista {
     }
 
     private Nodo quick(Nodo start, Nodo end){
-        if (start == null || start == end || start.VerSig()== end){
-            System.out.println("start");
+        if (start == null || start == end || start.siguiente== end){
+            System.out.println(start);
             return start;
         }
 

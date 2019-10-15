@@ -50,7 +50,7 @@ public class Tree {
 
 
 public void Recorrer(NodoArbol n){
-        //Validar
+        //Validargit git
         if(n!=null){
             if(n.Contenido.equals(Conversor.EvaluacionBusq.ver(1))){
                 System.out.println(n.Contenido);

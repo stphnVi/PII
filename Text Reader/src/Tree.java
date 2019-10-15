@@ -52,12 +52,15 @@ public class Tree {
 public void Recorrer(NodoArbol n){
         //Validargit git
         if(n!=null){
-            if(n.Contenido.equals(Conversor.EvaluacionBusq.ver(1))){
+
+            if(n.Contenido.equals(Conversor.EvaluacionBusq.ver(0))){
                 System.out.println(n.Contenido);
                 System.out.println(Controller.HashVal);
                 System.out.println("contenido de una fruta y búsqueda son iguales");
 
             }
+
+
                 // Cambiar el orden de las recursiones para recorrer alrevez el arbol;
                 Recorrer(n.Izquierda);
                 System.out.println("indice: " + n.llave + "---" + "contenido: " + n.Contenido);

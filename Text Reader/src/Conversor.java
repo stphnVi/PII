@@ -77,7 +77,7 @@ public class Conversor {
                     fr.close();
                 }
 
-                for(int i=0; i<= EvaluacionBusq.getTamaño()-1; i++){
+                for(int i=0; i<= EvaluacionBusq.tamaño  -1; i++){
                     System.out.println(EvaluacionBusq.ver(i));
                 }
 

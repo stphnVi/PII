@@ -23,6 +23,9 @@ public class Controller {
     @FXML VBox files;
     @FXML Button search;
     @FXML TextField txt;
+    @FXML VBox name;
+    @FXML VBox size;
+    @FXML VBox date;
     int temp1;
     int temp2;
 
@@ -106,7 +109,7 @@ public class Controller {
 
                         System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
                         InfoTable a = new InfoTable();
-                        a.AddName();
+                        a.addInfo(file, name,size,date);
 
                     }
 

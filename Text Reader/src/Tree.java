@@ -48,10 +48,11 @@ public class Tree {
 
     }
 
+
 public void Recorrer(NodoArbol n){
         //Validar
         if(n!=null){
-            if(n.Contenido.equals(Controller.HashVal)){
+            if(n.Contenido.equals(Conversor.EvaluacionBusq.ver(1))){
                 System.out.println(n.Contenido);
                 System.out.println(Controller.HashVal);
                 System.out.println("contenido de una fruta y búsqueda son iguales");
@@ -65,6 +66,19 @@ public void Recorrer(NodoArbol n){
         }
 
 }
+
+    public void BusOración(NodoArbol n){
+
+
+
+
+    }
+
+    public void BusPalabra(){
+
+
+
+    }
 
 
 

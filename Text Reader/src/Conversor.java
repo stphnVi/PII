@@ -5,12 +5,12 @@ import java.util.StringTokenizer;
 
 public class Conversor {
 
-
+    static Lista EvaluacionBusq = new Lista();
 
     public void Trans(String a){
         byte b;
         Tree arbol = new Tree();
-        Lista EvaluacionBusq = new Lista();
+
 
         File archivo = null;
         FileReader fr = null;

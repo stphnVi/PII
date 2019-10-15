@@ -4,35 +4,25 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.xml.soap.Text;
 import java.io.File;
+import java.util.StringTokenizer;
 
 public class Controller {
+    static String busqueda= "";
+    static int HashVal = 0;
 
-    @FXML
-    ComboBox<String> combo;
-    @FXML
-    Button UploadFiles;
-    @FXML
-    ComboBox<String> orderBy;
-    @FXML
-    Stage stage;
-    @FXML
-    TableView<String> InfoTable;
-    @FXML
-    VBox files;
-    @FXML
-    public VBox name;
-    @FXML
-    VBox size;
-    @FXML
-    VBox date;
-
+    @FXML ComboBox<String> combo;
+    @FXML Button UploadFiles;
+    @FXML ComboBox<String> orderBy;
+    @FXML Stage stage;
+    @FXML TableView<String> InfoTable;
+    @FXML VBox files;
+    @FXML Button search;
+    @FXML TextField txt;
     int temp1;
     int temp2;
 
@@ -46,8 +36,26 @@ public class Controller {
             combo.setEditable(false);
             temp1++;
         }
+        /***
+         * @see
+         * Cuando el usuario busca, la palabra se envía a la clase conversor
+         */
+        search.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                busqueda= txt.getText();
+                HashVal = busqueda.hashCode();
+                StringTokenizer st = new StringTokenizer(busqueda);
+                String sa = "";
 
+                while (st.hasMoreTokens()){
+                    sa = st.nextToken();
+                    System.out.println("\n"+sa);
+                }
+            }
+        });
     }
+
 
     public void OrderOptions(){
         if(temp2 ==0){
@@ -73,14 +81,18 @@ public class Controller {
                     if (file != null) {
                         String tempPath = file.getCanonicalPath().toLowerCase();
                         if (tempPath.endsWith(".txt")){
+                            addFile(file.getName(), new TextField());
                             System.out.println("file TXT");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "txt");
                         }else if(tempPath.endsWith(".pdf")){
+                            addFile(file.getName(), new TextField());
                             System.out.println("file PDF");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "pdf");
                         }else if (tempPath.endsWith(".docx")){
+                            //NEWWWW
+                            addFile(file.getName(), new TextField());
                             System.out.println("file DOCX");
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "docx");
@@ -91,13 +103,15 @@ public class Controller {
                             extentionError.setContentText("Invalid file extention \n Program only allows .txt/ .pdf/ .docx");
                             extentionError.show();
                         }
-                        addFile(file.getName(), new TextField());
-                        InfoTable A = new InfoTable();
-                        A.addInfo(file, name, size, date);
+
                         System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
+                        InfoTable a = new InfoTable();
+                        a.AddName();
+
                     }
 
                 } catch (Exception e) {
+                    System.out.println(e);
                     Alert nullError = new Alert(Alert.AlertType.ERROR);
                     nullError.setTitle("Error");
                     nullError.setContentText("El archivo seleccionado es nulo");
@@ -108,7 +122,6 @@ public class Controller {
     }
 
     public void addFile(String fileName, TextField archivo){
-        System.out.println("add");
         int length = (fileName.length())+500;
         archivo.setPrefSize(length,40);
         archivo.setText(fileName);

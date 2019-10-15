@@ -14,6 +14,7 @@ public class Tree {
      * fruta el nuevo nodo que insertaré
      */
     public void Insertar(int i, Object fruta){
+
         NodoArbol n = new NodoArbol(i);
         n.Contenido = fruta;
         //Validar si la raiz es nula para crear el arbol
@@ -47,16 +48,37 @@ public class Tree {
 
     }
 
+
 public void Recorrer(NodoArbol n){
-        //Validar
+        //Validargit git
         if(n!=null){
-            // Cambiar el orden de las recursiones para recorrer alrevez el arbol;
-            Recorrer(n.Izquierda);
-            System.out.println("indice: "+ n.llave+ "---" + "contenido: "+ n.Contenido);
-            Recorrer(n.Derecha);
+            if(n.Contenido.equals(Conversor.EvaluacionBusq.ver(1))){
+                System.out.println(n.Contenido);
+                System.out.println(Controller.HashVal);
+                System.out.println("contenido de una fruta y búsqueda son iguales");
+
+            }
+                // Cambiar el orden de las recursiones para recorrer alrevez el arbol;
+                Recorrer(n.Izquierda);
+                System.out.println("indice: " + n.llave + "---" + "contenido: " + n.Contenido);
+                Recorrer(n.Derecha);
+
         }
 
 }
+
+    public void BusOración(NodoArbol n){
+
+
+
+
+    }
+
+    public void BusPalabra(){
+
+
+
+    }
 
 
 

@@ -39,9 +39,6 @@ public class Main extends Application {
         primaryStage.setTitle("Proyecto II - Text Reader");
         primaryStage.show();
 
-
-
-
     }
 
 

@@ -134,26 +134,12 @@ public class Tree {
 
     }
 
-    /*
-         if(Conversor.EvaluacionBusq.tamaño == 0){
-                String cambio = Conversor.EvaluacionBusq.ver(n.llave-1).toString();
-                if(n.Contenido.equals(cambio.hashCode())){
-                    System.out.println("contenido de una fruta y búsqueda son iguales");
-                }
+   /*
+                System.out.println("parte Izquierda del Arbol(raiz no se lee)");
+                arbol.Recorrer(arbol.raiz.Izquierda);
+                System.out.println("parte Derecha del Arbol(raiz no se lee)");
+                arbol.Recorrer(arbol.raiz.Derecha);
 
-            }else{
 
-                System.out.println(n.llave);
-
-                String cambio = Conversor.EvaluacionBusq.ver(n.llave-1).toString();
-                if(n.Contenido.equals(cambio.hashCode())){
-                    System.out.println("contenido de una fruta y búsqueda son iguales");
-                    System.out.println(n.Contenido);
-                }else{
-                    System.out.println("contenido de una fruta y búsqueda no son iguales");
-
-                }
-            }
-         */
-
+                */
 }

@@ -1,15 +1,20 @@
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripperByArea;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class Conversor {
 
     static Lista EvaluacionBusq = new Lista();
-
-    public void Trans(String a){
+    Tree arbol = new Tree();
+    public void TXT(String a) {
         byte b;
-        Tree arbol = new Tree();
+
 
 
         File archivo = null;
@@ -20,8 +25,8 @@ public class Conversor {
             /*
             Abrir el archivo y leerlo
              */
-            archivo = new File (a);
-            fr = new FileReader (archivo);
+            archivo = new File(a);
+            fr = new FileReader(archivo);
             br = new BufferedReader(fr);
             String s2;
             String s1;
@@ -30,11 +35,10 @@ public class Conversor {
             StringTokenizer st = new StringTokenizer(s1);
 
             /***
-            *separar las letras de la linea para poder insertar en el arbol
+             *separar las letras de la linea para poder insertar en el arbol
              */
             int i = 0;
-            while (st.hasMoreTokens())
-            {
+            while (st.hasMoreTokens()) {
                 s2 = st.nextToken();
                 numTokens++;
                 arbol.Insertar(numTokens, s2.hashCode());
@@ -48,47 +52,83 @@ public class Conversor {
             StringTokenizer leer = new StringTokenizer(Controller.busqueda);
             String sa = "";
 
-            while (leer.hasMoreTokens()){
+            while (leer.hasMoreTokens()) {
                 sa = leer.nextToken();
                 EvaluacionBusq.agregarDelante(sa);
             }
 
-            for(int k=0; k<= EvaluacionBusq.tamaño  -1; k++){
+            for (int k = 0; k <= EvaluacionBusq.tamaño - 1; k++) {
                 //System.out.print(EvaluacionBusq.ver(k));
             }
 
 
-
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             /*
             cerrar el archivo e imprimir las frutas del arbol
              */
 
-            try{
+            try {
 
-
-                /*
-                System.out.println("parte Izquierda del Arbol(raiz no se lee)");
-                arbol.Recorrer(arbol.raiz.Izquierda);
-                System.out.println("parte Derecha del Arbol(raiz no se lee)");
-                arbol.Recorrer(arbol.raiz.Derecha);
-                */
                 System.out.println("Todo el Arbol");
                 arbol.Recorrer(arbol.raiz);
-                if( null != fr ){
+                if (null != fr) {
                     fr.close();
                 }
 
-
-
-
-
-            }catch (Exception e2){
+            } catch (Exception e2) {
                 e2.printStackTrace();
             }
         }
+    }
+
+    public void PDF(String a) {
+
+
+        try (PDDocument document = PDDocument.load(new File(a))) {
+
+            document.getClass();
+
+            if (!document.isEncrypted()) {
+
+                PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+                stripper.setSortByPosition(true);
+
+                PDFTextStripper tStripper = new PDFTextStripper();
+
+                String pdfFileInText = tStripper.getText(document);
+
+
+                StringTokenizer st = new StringTokenizer( pdfFileInText );
+                String sa = "";
+                int p = 0;
+                int numTokens = 0;
+                //INSERTAR AL ARBOL
+                while (st.hasMoreTokens()){
+                    sa = st.nextToken();
+                    numTokens++;
+                    arbol.Insertar(numTokens, sa.hashCode());
+                    p++;
+
+                }
+
+                StringTokenizer leer = new StringTokenizer(Controller.busqueda);
+                String su = "";
+
+                while (leer.hasMoreTokens()) {
+                    su = leer.nextToken();
+                    EvaluacionBusq.agregarDelante(su);
+                }
+
+                arbol.Recorrer(arbol.raiz);
+
+
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

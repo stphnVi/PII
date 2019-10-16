@@ -93,18 +93,26 @@ public class Controller {
                         folderDisplay.setText(carpeta.getName());
 
                         for (int x = 0; x < ficheros.length; x++) {
-                            System.out.println(ficheros[x]);
                             if (ficheros[x].endsWith(".txt")) {
-                                MenuItem txt = new MenuItem(ficheros[x]);
+                                MenuItem txt = new MenuItem(new File(ficheros[x]).getName());
                                 folderDisplay.getItems().addAll(txt);
                             } else if (ficheros[x].endsWith(".pdf")) {
-                                MenuItem txt = new MenuItem(ficheros[x]);
-                                folderDisplay.getItems().addAll(txt);
+                                MenuItem pdf = new MenuItem(new File(ficheros[x]).getName());
+                                folderDisplay.getItems().addAll(pdf);
                             } else if (ficheros[x].endsWith(".docx")) {
-                                MenuItem txt = new MenuItem(ficheros[x]);
-                                folderDisplay.getItems().addAll(txt);
+                                MenuItem docx = new MenuItem(new File(ficheros[x]).getName());
+                                folderDisplay.getItems().addAll(docx);
+                            }else{
+                                Alert extentionError = new Alert(Alert.AlertType.WARNING);
+                                extentionError.setTitle("Warning");
+                                extentionError.setHeaderText("Chosen directory does not contain valid files");
+                                extentionError.show();
+
                             }
                         }files.getChildren().addAll(folderDisplay);
+                        InfoTable a = new InfoTable();
+                        a.addInfo(carpeta, name,size,date);
+
                     }
 
                 } catch (Exception e) {

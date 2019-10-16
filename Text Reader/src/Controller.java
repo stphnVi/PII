@@ -39,6 +39,9 @@ public class Controller {
             combo.setEditable(false);
             temp1++;
         }
+
+    }
+    public void SearchButton(){
         /***
          * @see
          * Cuando el usuario busca, la palabra se envía a la clase conversor

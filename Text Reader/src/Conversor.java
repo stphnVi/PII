@@ -53,6 +53,11 @@ public class Conversor {
                 EvaluacionBusq.agregarDelante(sa);
             }
 
+            for(int k=0; k<= EvaluacionBusq.tamaño  -1; k++){
+                //System.out.print(EvaluacionBusq.ver(k));
+            }
+
+
 
         }
         catch(Exception e){
@@ -77,9 +82,7 @@ public class Conversor {
                     fr.close();
                 }
 
-                for(int i=0; i<= EvaluacionBusq.tamaño  -1; i++){
-                    System.out.println(EvaluacionBusq.ver(i));
-                }
+
 
 
 

@@ -15,6 +15,7 @@ import java.util.StringTokenizer;
 public class Controller {
     static String busqueda= "";
     static int HashVal = 0;
+    static int temp;
 
     @FXML ComboBox<String> combo;
     @FXML Button UploadFiles;
@@ -96,22 +97,29 @@ public class Controller {
                             if (ficheros[x].endsWith(".txt")) {
                                 MenuItem txt = new MenuItem(new File(ficheros[x]).getName());
                                 folderDisplay.getItems().addAll(txt);
+                                temp++;
                             } else if (ficheros[x].endsWith(".pdf")) {
                                 MenuItem pdf = new MenuItem(new File(ficheros[x]).getName());
                                 folderDisplay.getItems().addAll(pdf);
+                                temp++;
                             } else if (ficheros[x].endsWith(".docx")) {
                                 MenuItem docx = new MenuItem(new File(ficheros[x]).getName());
                                 folderDisplay.getItems().addAll(docx);
-                            }else{
-                                Alert extentionError = new Alert(Alert.AlertType.WARNING);
-                                extentionError.setTitle("Warning");
-                                extentionError.setHeaderText("Chosen directory does not contain valid files");
-                                extentionError.show();
-
+                                temp++;
                             }
-                        }files.getChildren().addAll(folderDisplay);
+
+                        }if(temp == 0) {
+                            Alert extentionError = new Alert(Alert.AlertType.WARNING);
+                            extentionError.setTitle("Warning");
+                            extentionError.setHeaderText("Chosen directory does not contain valid files");
+                            extentionError.show();
+                        }
+
+
+                        files.getChildren().addAll(folderDisplay);
                         InfoTable a = new InfoTable();
                         a.addInfo(carpeta, name,size,date);
+
 
                     }
 

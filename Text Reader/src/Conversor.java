@@ -12,6 +12,14 @@ public class Conversor {
 
     static Lista EvaluacionBusq = new Lista();
     Tree arbol = new Tree();
+
+    /**
+     *
+     * @param a
+     * a es el nombre del archivo
+     * este parametro se encarga de leer el archivo e introducir nosos al arbol y nodos a la lista
+     */
+
     public void TXT(String a) {
         byte b;
 
@@ -83,6 +91,13 @@ public class Conversor {
         }
     }
 
+    /**
+     *
+     * @param a
+     * a es el nombre del archivo
+     * este parametro se encarga de leer el archivo e introducir nosos al arbol y nodos a lla lista
+     */
+
     public void PDF(String a) {
 
 
@@ -104,7 +119,9 @@ public class Conversor {
                 String sa = "";
                 int p = 0;
                 int numTokens = 0;
-                //INSERTAR AL ARBOL
+                /***
+                 * insertar letra por letra al arbol
+                 */
                 while (st.hasMoreTokens()){
                     sa = st.nextToken();
                     numTokens++;
@@ -115,7 +132,10 @@ public class Conversor {
 
                 StringTokenizer leer = new StringTokenizer(Controller.busqueda);
                 String su = "";
-
+                /***
+                 *
+                 * insertar la frase o palabra que el usuario buscará a una lista enlazada
+                 */
                 while (leer.hasMoreTokens()) {
                     su = leer.nextToken();
                     EvaluacionBusq.agregarDelante(su);

@@ -58,7 +58,7 @@ public class Controller {
 
                 while (st.hasMoreTokens()){
                     sa = st.nextToken();
-                    System.out.println("\n"+sa);
+                    System.out.println("palabras que se buscan: "+ sa);
                 }
             }
         });

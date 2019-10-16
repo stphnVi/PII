@@ -1,4 +1,5 @@
 public class Tree {
+    int validar = 1;
     NodoArbol raiz;
     public Tree(){
         raiz = null;
@@ -48,42 +49,66 @@ public class Tree {
 
     }
 
+    /***
+     *
+     * @param n es la fruta del arbol
+     * @static EvaluacionBusq es la lista donde están los elementos
+     * que el usuario quiere buscar
+     *
+     * si la lista solo tiene un elemento, hace la validación
+     * y si no se llama la función ComOración
+     *
+     *
+     */
+    public void Recorrer(NodoArbol n){
 
-public void Recorrer(NodoArbol n){
-        //Validargit git
         if(n!=null){
 
-            if(n.Contenido.equals(Conversor.EvaluacionBusq.ver(0))){
-                System.out.println(n.Contenido);
-                System.out.println(Controller.HashVal);
-                System.out.println("contenido de una fruta y búsqueda son iguales");
+            if(Conversor.EvaluacionBusq.tamaño ==1) {
+                String cambio = Conversor.EvaluacionBusq.ver(0).toString();
+
+                if (n.Contenido.equals(cambio.hashCode())) {
+
+                    System.out.println("contenido de una fruta y búsqueda son iguales");
+                }
+            }else{
+                CompOracion(n);
 
             }
-
-
-                // Cambiar el orden de las recursiones para recorrer alrevez el arbol;
-                Recorrer(n.Izquierda);
-                System.out.println("indice: " + n.llave + "---" + "contenido: " + n.Contenido);
-                Recorrer(n.Derecha);
+            // Cambiar el orden de las recursiones para recorrer alrevez el arbol;
+            Recorrer(n.Izquierda);
+            System.out.println("indice: " + n.llave + "---" + "contenido: " + n.Contenido);
+            Recorrer(n.Derecha);
 
         }
 
-}
-
-    public void BusOración(NodoArbol n){
-
-
-
-
     }
 
-    public void BusPalabra(){
+    /***
+     *
+     * @param n fruta del arbol a evaluar en ua lista con más de una elemento
+     * este método busca la palabra en el arbol, ua vez que la encuentra
+     * pasa al siguiente valor en la lista y consecuentemente al la llave siguente del arbol
+     * para hacer las validaciones en orden
+     */
+
+    public void CompOracion(NodoArbol n){
 
 
+        if(validar == Conversor.EvaluacionBusq.tamaño+1){
+            System.out.println("termino la búsqueda");
+        }else {
+            String cambio = Conversor.EvaluacionBusq.ver(validar - 1).toString();
 
+            if (n.Contenido.equals(cambio.hashCode())) {
+                System.out.println("contenido de una fruta y búsqueda son iguales: " + n.Contenido);
+                validar++;
+
+            } else {
+
+            }
+        }
     }
-
-
 
     public class NodoArbol{
         // Padre es el nodo dentro del arbol del cual podran nacer fruticas
@@ -108,4 +133,13 @@ public void Recorrer(NodoArbol n){
 
 
     }
+
+   /*
+                System.out.println("parte Izquierda del Arbol(raiz no se lee)");
+                arbol.Recorrer(arbol.raiz.Izquierda);
+                System.out.println("parte Derecha del Arbol(raiz no se lee)");
+                arbol.Recorrer(arbol.raiz.Derecha);
+
+
+                */
 }

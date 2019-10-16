@@ -81,14 +81,14 @@
                   <Insets bottom="2.0" left="10.0" top="2.0" />
                </padding>
             </MenuBar>
-            <Button fx:id="UploadFiles" layoutX="56.0" layoutY="544.0" mnemonicParsing="false" onAction="#FileChooserButton" prefHeight="37.0" prefWidth="152.0" text="Upload Files" />
+            <Button fx:id="UploadFiles" layoutX="20.0" layoutY="543.0" mnemonicParsing="false" onAction="#FileChooserButton" prefHeight="37.0" prefWidth="109.0" text="Upload Files" />
             <Separator layoutX="-7.0" layoutY="497.0" prefHeight="1.0" prefWidth="279.0" />
             <Text layoutX="20.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uploaded files" underline="true">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="29.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click to upload new search files:" wrappingWidth="221.890625">
+            <Text layoutX="14.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click to upload new files or directories:" wrappingWidth="243.33333333333343">
                <font>
                   <Font size="14.0" />
                </font>
@@ -102,6 +102,7 @@
                   </AnchorPane>
               </content>
             </ScrollPane>
+            <Button fx:id="UploadDir" layoutX="147.0" layoutY="543.0" mnemonicParsing="false" onAction="#DirChooserButton" prefHeight="37.0" prefWidth="109.0" text="Upload Directory" />
          </children>
       </AnchorPane>
    </children>

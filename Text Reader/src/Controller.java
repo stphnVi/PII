@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -17,6 +18,7 @@ public class Controller {
 
     @FXML ComboBox<String> combo;
     @FXML Button UploadFiles;
+    @FXML Button UploadDir;
     @FXML ComboBox<String> orderBy;
     @FXML Stage stage;
     @FXML TableView<String> InfoTable;
@@ -72,6 +74,47 @@ public class Controller {
             temp2++;
         }
     }
+    public void DirChooserButton(ActionEvent event){
+        UploadDir.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Upload Files");
+                try {
+                    DirectoryChooser dir_chooser = new DirectoryChooser();
+                    File carpeta = dir_chooser.showDialog(stage);
+
+                    String[] ficheros = carpeta.list();
+                    if (ficheros == null) {
+                        System.out.println("No hay ficheros en el directorio especificado");
+                    } else {
+                        MenuButton folderDisplay = new MenuButton();
+                        int length = (carpeta.getName().length())+400;
+                        folderDisplay.setPrefSize(length,40);
+                        folderDisplay.setText(carpeta.getName());
+
+                        for (int x = 0; x < ficheros.length; x++) {
+                            System.out.println(ficheros[x]);
+                            if (ficheros[x].endsWith(".txt")) {
+                                MenuItem txt = new MenuItem(ficheros[x]);
+                                folderDisplay.getItems().addAll(txt);
+                            } else if (ficheros[x].endsWith(".pdf")) {
+                                MenuItem txt = new MenuItem(ficheros[x]);
+                                folderDisplay.getItems().addAll(txt);
+                            } else if (ficheros[x].endsWith(".docx")) {
+                                MenuItem txt = new MenuItem(ficheros[x]);
+                                folderDisplay.getItems().addAll(txt);
+                            }
+                        }files.getChildren().addAll(folderDisplay);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        });
+    }
+
 
     public void FileChooserButton(ActionEvent event) {
 
@@ -97,7 +140,6 @@ public class Controller {
                             Read read= new Read();
                             read.leer(file.getAbsolutePath(), "pdf");
                         }else if (tempPath.endsWith(".docx")){
-                            //NEWWWW
                             addFile(file.getName(), new TextField());
                             System.out.println("file DOCX");
                             Read read= new Read();
@@ -133,6 +175,13 @@ public class Controller {
         archivo.setText(fileName);
         archivo.setEditable(false);
         files.getChildren().addAll(archivo);
+    }
+
+    public void addDir(String dirName, MenuButton carpeta){
+        int length = (dirName.length())+400;
+        carpeta.setPrefSize(length,40);
+        carpeta.setText(dirName);
+        files.getChildren().addAll(carpeta);
     }
 
 

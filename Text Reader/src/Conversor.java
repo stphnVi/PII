@@ -1,11 +1,11 @@
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.List;
 import java.util.StringTokenizer;
 
 public class Conversor {
@@ -147,6 +147,25 @@ public class Conversor {
 
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void DOCX(String a){
+        try {
+            File file = new File(a);
+            FileInputStream fis = new FileInputStream(file.getAbsolutePath());
+
+            XWPFDocument document = new XWPFDocument(fis);
+
+            List<XWPFParagraph> paragraphs = document.getParagraphs();
+
+
+            for (XWPFParagraph para : paragraphs) {
+                System.out.println(para.getText());
+            }
+            fis.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

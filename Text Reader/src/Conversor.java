@@ -1,8 +1,8 @@
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
-//import org.apache.poi.xwpf.usermodel.XWPFDocument;
-//import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 
 import java.io.*;
 import java.util.List;
@@ -156,14 +156,14 @@ public class Conversor {
             File file = new File(a);
             FileInputStream fis = new FileInputStream(file.getAbsolutePath());
 
-            //XWPFDocument document = new XWPFDocument(fis);
+            XWPFDocument document = new XWPFDocument(fis);
 
-            //List<XWPFParagraph> paragraphs = document.getParagraphs();
+            List<XWPFParagraph> paragraphs = document.getParagraphs();
 
 
-            /*for (XWPFParagraph para : paragraphs) {
+            for (XWPFParagraph para : paragraphs) {
                 System.out.println(para.getText());
-            }*/
+            }
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();

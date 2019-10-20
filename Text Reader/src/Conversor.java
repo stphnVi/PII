@@ -155,15 +155,33 @@ public class Conversor {
         try {
             File file = new File(a);
             FileInputStream fis = new FileInputStream(file.getAbsolutePath());
-
             XWPFDocument document = new XWPFDocument(fis);
-
+            String sa = "";
+            int numTokens = 0;
             List<XWPFParagraph> paragraphs = document.getParagraphs();
-
-
             for (XWPFParagraph para : paragraphs) {
-                System.out.println(para.getText());
+                StringTokenizer st = new StringTokenizer(para.getText());
+
+                while (st.hasMoreTokens()){
+                    sa = st.nextToken();
+                    numTokens++;
+                    arbol.Insertar(numTokens, sa.hashCode());
+                }
+
+                StringTokenizer leer = new StringTokenizer(Controller.busqueda);
+                String su = "";
+                /***
+                 *
+                 * insertar la frase o palabra que el usuario buscará a una lista enlazada
+                 */
+                while (leer.hasMoreTokens()) {
+                    su = leer.nextToken();
+                    EvaluacionBusq.agregarDelante(su);
+                }
+                arbol.Recorrer(arbol.raiz);
+
             }
+
             fis.close();
         } catch (Exception e) {
             e.printStackTrace();

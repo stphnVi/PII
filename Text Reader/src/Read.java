@@ -76,7 +76,11 @@ public class Read {
         //DOCX(solucionar librería)
 
         } else {
+            Conversor conv = new Conversor();
+            conv.DOCX(x);
+
+            }
 
         }
     }
-}
+

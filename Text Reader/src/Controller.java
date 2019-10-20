@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class Controller {
@@ -60,6 +61,13 @@ public class Controller {
                 while (st.hasMoreTokens()){
                     sa = st.nextToken();
                     System.out.println("palabras que se buscan: "+ sa);
+                }
+
+                Results buscar = new Results();
+                try {
+                    buscar.newRes();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         });

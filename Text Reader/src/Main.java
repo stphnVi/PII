@@ -37,7 +37,7 @@ public class Main extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Proyecto II - Text Reader");
-        //primaryStage.show();
+        primaryStage.show();
 
     }
 

@@ -9,6 +9,7 @@ public class Nodo {
         this.dato = dato;
         this.siguiente = null;
         this.prev = null;
+
     }
     Nodo VerSig()
     {
@@ -21,5 +22,6 @@ public class Nodo {
     Object VerDato() {
         return this.dato;
     }
+
 
 }

@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
 public class Controller {
     static String busqueda= "";
     static int HashVal = 0;
-    static int temp;
+    static int temp;        //variable temporal
 
     @FXML ComboBox<String> combo;
     @FXML Button UploadFiles;
@@ -119,6 +119,7 @@ public class Controller {
                         files.getChildren().addAll(folderDisplay);
                         InfoTable a = new InfoTable();
                         a.addInfo(carpeta, name,size,date);
+                        temp = 0;
 
 
                     }

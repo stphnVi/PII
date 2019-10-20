@@ -25,10 +25,10 @@ public class Main extends Application {
         primaryStage.setScene(scene);
 
         Lista B = new Lista();
-        B.addLast(3);
-        B.addLast(1);
+        B.addLast("n");
+        B.addLast("b");
         QuickSort A = new QuickSort();
-        B.radixsort(B);
+        B.init_quick(B);
         B.printList(B);
 
 
@@ -37,7 +37,7 @@ public class Main extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("Proyecto II - Text Reader");
-        primaryStage.show();
+        //primaryStage.show();
 
     }
 

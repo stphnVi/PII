@@ -174,56 +174,6 @@ public class Lista extends InfoTable {
     }
 
 
-    //_____________________________________/ QUICK SORT /__________________________________________________
-
-    public Nodo quickSort() {
-        System.out.println("entra");
-        if (cabeza == null || cabeza.VerSig() == null){
-            return cabeza;
-        }
-        return quick(cabeza, null);
-    }
-
-    private Nodo quick(Nodo start, Nodo end){
-        if (start == null || start == end || start.siguiente== end){
-            System.out.println(start);
-            return start;
-        }
-
-        Nodo[] result = partition(start, end);
-        //System.out.println(result);
-        Nodo resultLeft = quick(result[0], result[1]);
-        Nodo resultRight = quick(result[1].VerSig(), end);
-        return resultLeft;
-
-    }
-
-    private Nodo[] partition(Nodo start, Nodo end){
-        // start inclusive
-        // end exclusive
-        // return the new start node and the pivot node
-
-        if (start == null || start == end || start.VerSig() == end){
-            return new Nodo[] {start, start};
-        }
-        Nodo dummy = new Nodo(0).VerSig();
-        dummy = start;
-
-        for (Nodo j = start; j != null && j.VerSig() != null && j.VerSig() != end; j = j.VerSig()) {
-            while (j.VerSig() != null && (j.VerSig()).hashCode() <= (start.VerDato()).hashCode()){
-                System.out.println("change");
-                Nodo tmp = j.VerSig();
-                j.siguiente = j.VerSig().VerSig();
-                tmp.siguiente = dummy.VerSig();
-                dummy.siguiente = tmp;
-                System.out.println(j);
-            }
-        }
-        return new Nodo[] {dummy.VerSig(), start};
-    }
-
-
-
     //_____________________________________/ RADIX SORT /__________________________________________________
 
 
@@ -264,5 +214,52 @@ public class Lista extends InfoTable {
 
         for (int exp = 1; m / exp > 0; exp *= 10)
             countSort(list, n, exp);
+    }
+
+    //_____________________________________/ QUICK SORT /__________________________________________________
+
+    public void init_quick(Lista list){
+        int begin = 0;
+        int end = list.tamaño-1;
+        quickSort(list, begin, end);
+    }
+    public void quickSort(Lista list, int begin, int end) {
+        char char_begin = ((String)list.ver(begin)).charAt(0);
+        char char_end =  ((String)list.ver(end)).charAt(0);
+        if (Character.hashCode(char_begin) > Character.hashCode(char_end)) {
+            int partitionIndex = partition(list, begin ,end);
+
+            quickSort(list, begin, partitionIndex-1);
+            quickSort(list, partitionIndex+1, end);
+        }
+
+    }
+    private int partition(Lista list, int begin, int end) {
+        System.out.println(end);
+        String pivot = (String) list.ver(end);
+        int i = (begin-1);
+
+        for (int j = begin; j < end; j++) {
+            char temp = ((String)list.ver(j)).charAt(0);
+            char char_pivot = pivot.charAt(0);
+            if (Character.hashCode(temp) <= Character.hashCode(char_pivot)) {
+                i++;
+
+                String swapTemp = (String) list.ver(i);
+                String val = (String) list.ver(i);
+                val = (String) list.ver(j);
+                String val2 = (String) list.ver(i);
+                 val2 = swapTemp;
+            }
+        }
+
+        Nodo swapTemp = list.getElemento(i+1);
+        Nodo val = list.getElemento(i+1);
+        val = list.getElemento(end);
+        Nodo val2 = list.getElemento(end);
+        val2 = swapTemp;
+
+
+        return i+1;
     }
 }

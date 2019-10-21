@@ -157,18 +157,18 @@ public class Controller {
                         if (tempPath.endsWith(".txt")){
                             addFile(file.getName(), new TextField());
                             System.out.println("file TXT");
-                            Read read= new Read();
-                            read.leer(file.getAbsolutePath(), "txt");
+                            TXT read= new TXT();
+                            read.leer(file.getAbsolutePath());
                         }else if(tempPath.endsWith(".pdf")){
                             addFile(file.getName(), new TextField());
                             System.out.println("file PDF");
-                            Read read= new Read();
-                            read.leer(file.getAbsolutePath(), "pdf");
+                            PDF read = new PDF();
+                            read.leer(file.getAbsolutePath());
                         }else if (tempPath.endsWith(".docx")){
                             addFile(file.getName(), new TextField());
                             System.out.println("file DOCX");
-                            Read read= new Read();
-                            read.leer(file.getAbsolutePath(), "docx");
+                            DOCX read= new DOCX();
+                            read.leer(file.getAbsolutePath());
 
                         }else{
                             Alert extentionError = new Alert(Alert.AlertType.ERROR);

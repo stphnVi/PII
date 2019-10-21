@@ -64,8 +64,8 @@ public class Tree {
 
         if(n!=null){
 
-            if(Conversor.EvaluacionBusq.tamaño ==1) {
-                String cambio = Conversor.EvaluacionBusq.ver(0).toString();
+            if(Conversor.Evaluacion.tamaño ==1) {
+                String cambio = Conversor.Evaluacion.ver(0).toString();
 
                 if (n.Contenido.equals(cambio.hashCode())) {
 
@@ -95,10 +95,10 @@ public class Tree {
     public void CompOracion(NodoArbol n){
 
 
-        if(validar == Conversor.EvaluacionBusq.tamaño+1){
+        if(validar == Conversor.Evaluacion.tamaño+1){
             System.out.println("termino la búsqueda");
         }else {
-            String cambio = Conversor.EvaluacionBusq.ver(validar - 1).toString();
+            String cambio = Conversor.Evaluacion.ver(validar - 1).toString();
 
             if (n.Contenido.equals(cambio.hashCode())) {
                 System.out.println("contenido de una fruta y búsqueda son iguales: " + n.Contenido);

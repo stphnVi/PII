@@ -10,5 +10,6 @@
     <orderEntry type="library" name="pdfbox-app-2.0.17" level="project" />
     <orderEntry type="library" name="gradle-wrapper" level="project" />
     <orderEntry type="library" name="poi-ooxml-schemas-4.1.0" level="project" />
+    <orderEntry type="library" name="richtextfx-0.10.2" level="project" />
   </component>
 </module>

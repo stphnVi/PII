@@ -8,8 +8,10 @@ import java.util.StringTokenizer;
 
 public class DOCX extends Conversor {
 
+
     static Lista EvaluacionBusq = new Lista();
     Tree arbol = new Tree();
+    Conversor recorrida = new Conversor();
 
     public void leer(String a){
         try {
@@ -36,10 +38,12 @@ public class DOCX extends Conversor {
                  */
                 while (leer.hasMoreTokens()) {
                     su = leer.nextToken();
-                    EvaluacionBusq.agregarDelante(su);
+                    EvaluacionBusq.addLast(su);
+                    System.out.println(su+ "lista");
                 }
                 Conversor.Evaluacion = EvaluacionBusq;
-                arbol.Recorrer(arbol.raiz);
+                Controller.Docu = para.getText();
+                recorrida.Recorrer(arbol.raiz, para.getText(), numTokens);
 
             }
 

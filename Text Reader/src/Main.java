@@ -27,7 +27,7 @@ public class Main extends Application {
         Lista B = new Lista();
         B.addLast("n");
         B.addLast("b");
-        QuickSort A = new QuickSort();
+        //QuickSort A = new QuickSort();
         B.init_quick(B);
         B.printList(B);
 

@@ -6,7 +6,9 @@ import java.util.StringTokenizer;
 public class TXT extends Conversor {
     Lista EvaluacionBusq = new Lista();
     Tree arbol = new Tree();
-
+    Conversor recorrida = new Conversor();
+    String K= "";
+    int numTokens = 0;
 
     public void leer(String a) {
         byte b;
@@ -27,7 +29,10 @@ public class TXT extends Conversor {
             String s2;
             String s1;
             s1 = br.readLine();
-            int numTokens = 0;
+
+            K = s1;
+
+
             StringTokenizer st = new StringTokenizer(s1);
 
             /***
@@ -50,9 +55,10 @@ public class TXT extends Conversor {
 
             while (leer.hasMoreTokens()) {
                 sa = leer.nextToken();
-                EvaluacionBusq.agregarDelante(sa);
+                EvaluacionBusq.addLast(sa);
             }
             Conversor.Evaluacion = EvaluacionBusq;
+            Controller.Docu = s1;
 
 
         } catch (Exception e) {
@@ -65,7 +71,7 @@ public class TXT extends Conversor {
             try {
 
                 System.out.println("Todo el Arbol");
-                arbol.Recorrer(arbol.raiz);
+                recorrida.Recorrer(arbol.raiz, K, numTokens);
                 if (null != fr) {
                     fr.close();
                 }

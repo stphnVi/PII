@@ -17,7 +17,7 @@ public class Controller {
     static String busqueda= "";
     static int HashVal = 0;
     static int temp;        //variable temporal
-
+    static String Docu = "";
     @FXML ComboBox<String> combo;
     @FXML Button UploadFiles;
     @FXML Button UploadDir;
@@ -50,25 +50,22 @@ public class Controller {
          * @see
          * Cuando el usuario busca, la palabra se envía a la clase conversor
          */
-        search.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                busqueda= txt.getText();
-                HashVal = busqueda.hashCode();
-                StringTokenizer st = new StringTokenizer(busqueda);
-                String sa = "";
+        search.setOnAction(event -> {
+            busqueda= txt.getText();
+            HashVal = busqueda.hashCode();
+            StringTokenizer st = new StringTokenizer(busqueda);
+            String sa;
 
-                while (st.hasMoreTokens()){
-                    sa = st.nextToken();
-                    System.out.println("palabras que se buscan: "+ sa);
-                }
+            while (st.hasMoreTokens()){
+                sa = st.nextToken();
+                System.out.println("palabras que se buscan: "+ sa);
+            }
 
-                Results buscar = new Results();
-                try {
-                    buscar.newRes();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            Results buscar = new Results();
+            try {
+                buscar.newRes();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
@@ -141,55 +138,52 @@ public class Controller {
     }
 
 
-    public void FileChooserButton(ActionEvent event) {
+    public void FileChooserButton() {
 
-        UploadFiles.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Upload Files");
-                try {
+        UploadFiles.setOnAction(event1 -> {
+            System.out.println("Upload Files");
+            try {
 
-                    FileChooser fil_chooser = new FileChooser();
-                    File file = fil_chooser.showOpenDialog(stage);
+                FileChooser fil_chooser = new FileChooser();
+                File file = fil_chooser.showOpenDialog(stage);
 
-                    if (file != null) {
-                        String tempPath = file.getCanonicalPath().toLowerCase();
-                        if (tempPath.endsWith(".txt")){
-                            addFile(file.getName(), new TextField());
-                            System.out.println("file TXT");
-                            TXT read= new TXT();
-                            read.leer(file.getAbsolutePath());
-                        }else if(tempPath.endsWith(".pdf")){
-                            addFile(file.getName(), new TextField());
-                            System.out.println("file PDF");
-                            PDF read = new PDF();
-                            read.leer(file.getAbsolutePath());
-                        }else if (tempPath.endsWith(".docx")){
-                            addFile(file.getName(), new TextField());
-                            System.out.println("file DOCX");
-                            DOCX read= new DOCX();
-                            read.leer(file.getAbsolutePath());
+                if (file != null) {
+                    String tempPath = file.getCanonicalPath().toLowerCase();
+                    if (tempPath.endsWith(".txt")){
+                        addFile(file.getName(), new TextField());
+                        System.out.println("file TXT");
+                        TXT read= new TXT();
+                        read.leer(file.getAbsolutePath());
+                    }else if(tempPath.endsWith(".pdf")){
+                        addFile(file.getName(), new TextField());
+                        System.out.println("file PDF");
+                        PDF read = new PDF();
+                        read.leer(file.getAbsolutePath());
+                    }else if (tempPath.endsWith(".docx")){
+                        addFile(file.getName(), new TextField());
+                        System.out.println("file DOCX");
+                        DOCX read= new DOCX();
+                        read.leer(file.getAbsolutePath());
 
-                        }else{
-                            Alert extentionError = new Alert(Alert.AlertType.ERROR);
-                            extentionError.setTitle("Error");
-                            extentionError.setContentText("Invalid file extention \n Program only allows .txt/ .pdf/ .docx");
-                            extentionError.show();
-                        }
-
-                        System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
-                        InfoTable a = new InfoTable();
-                        a.addInfo(file, name,size,date);
-
+                    }else{
+                        Alert extentionError = new Alert(Alert.AlertType.ERROR);
+                        extentionError.setTitle("Error");
+                        extentionError.setContentText("Invalid file extention \n Program only allows .txt/ .pdf/ .docx");
+                        extentionError.show();
                     }
 
-                } catch (Exception e) {
-                    System.out.println(e);
-                    Alert nullError = new Alert(Alert.AlertType.ERROR);
-                    nullError.setTitle("Error");
-                    nullError.setContentText("El archivo seleccionado es nulo");
-                    nullError.show();
+                    System.out.println("  selected/hadle part:  "+(file.getAbsolutePath()));
+                    InfoTable a = new InfoTable();
+                    a.addInfo(file, name,size,date);
+
                 }
+
+            } catch (Exception e) {
+                System.out.println(e);
+                Alert nullError = new Alert(Alert.AlertType.ERROR);
+                nullError.setTitle("Error");
+                nullError.setContentText("El archivo seleccionado es nulo");
+                nullError.show();
             }
         });
     }

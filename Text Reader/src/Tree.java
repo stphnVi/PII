@@ -1,5 +1,5 @@
 public class Tree {
-    int validar = 1;
+
     NodoArbol raiz;
     public Tree(){
         raiz = null;
@@ -49,66 +49,6 @@ public class Tree {
 
     }
 
-    /***
-     *
-     * @param n es la fruta del arbol
-     * @static EvaluacionBusq es la lista donde están los elementos
-     * que el usuario quiere buscar
-     *
-     * si la lista solo tiene un elemento, hace la validación
-     * y si no se llama la función ComOración
-     *
-     *
-     */
-    public void Recorrer(NodoArbol n){
-
-        if(n!=null){
-
-            if(Conversor.Evaluacion.tamaño ==1) {
-                String cambio = Conversor.Evaluacion.ver(0).toString();
-
-                if (n.Contenido.equals(cambio.hashCode())) {
-
-                    System.out.println("contenido de una fruta y búsqueda son iguales");
-                }
-            }else{
-                CompOracion(n);
-
-            }
-            // Cambiar el orden de las recursiones para recorrer alrevez el arbol;
-            Recorrer(n.Izquierda);
-            System.out.println("indice: " + n.llave + "---" + "contenido: " + n.Contenido);
-            Recorrer(n.Derecha);
-
-        }
-
-    }
-
-    /***
-     *
-     * @param n fruta del arbol a evaluar en ua lista con más de una elemento
-     * este método busca la palabra en el arbol, ua vez que la encuentra
-     * pasa al siguiente valor en la lista y consecuentemente al la llave siguente del arbol
-     * para hacer las validaciones en orden
-     */
-
-    public void CompOracion(NodoArbol n){
-
-
-        if(validar == Conversor.Evaluacion.tamaño+1){
-            System.out.println("termino la búsqueda");
-        }else {
-            String cambio = Conversor.Evaluacion.ver(validar - 1).toString();
-
-            if (n.Contenido.equals(cambio.hashCode())) {
-                System.out.println("contenido de una fruta y búsqueda son iguales: " + n.Contenido);
-                validar++;
-
-            } else {
-
-            }
-        }
-    }
 
     public class NodoArbol{
         // Padre es el nodo dentro del arbol del cual podran nacer fruticas

@@ -10,6 +10,7 @@ public class PDF {
 
     Tree arbol = new Tree();
     Lista EvaluacionBusq = new Lista();
+    Conversor recorrida = new Conversor();
 
 
     public void leer(String a){
@@ -50,11 +51,11 @@ public class PDF {
                  */
                 while (leer.hasMoreTokens()) {
                     su = leer.nextToken();
-                    EvaluacionBusq.agregarDelante(su);
+                    EvaluacionBusq.addLast(su);
                 }
                 Conversor.Evaluacion = EvaluacionBusq;
-
-                arbol.Recorrer(arbol.raiz);
+                Controller.Docu = pdfFileInText;
+                recorrida.Recorrer(arbol.raiz, pdfFileInText, numTokens);
 
 
 

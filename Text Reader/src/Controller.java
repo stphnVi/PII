@@ -33,7 +33,13 @@ public class Controller {
     int temp1;
     int temp2;
 
-
+    /***
+     * @ see
+     * en los últimos cambios usé lambda para los eventos
+     *
+     *
+     *
+     */
 
     public void ComboOptions(){
         if(temp1 == 0){
@@ -50,6 +56,7 @@ public class Controller {
          * @see
          * Cuando el usuario busca, la palabra se envía a la clase conversor
          */
+        //LO CAMBIÉ POR LAMBDA
         search.setOnAction(event -> {
             busqueda= txt.getText();
             HashVal = busqueda.hashCode();
@@ -139,7 +146,7 @@ public class Controller {
 
 
     public void FileChooserButton() {
-
+        //LO CAMBIÉ POR LAMBDA
         UploadFiles.setOnAction(event1 -> {
             System.out.println("Upload Files");
             try {

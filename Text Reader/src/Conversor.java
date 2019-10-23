@@ -127,6 +127,12 @@ public class Conversor {
         highlightableTextArea.getTextArea().setStyle("-fx-font-size: 20px;");
         VBox.setVgrow(highlightableTextArea, Priority.ALWAYS);
 
+        /***
+         * aca se coloca de que letra a que letra se quiere subrayar en cualquier texto
+         *
+         */
+        highlightableTextArea.highlight(0, 2);
+
 
         root.getChildren().addAll(highlightableTextArea);
 

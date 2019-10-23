@@ -12,16 +12,15 @@ public class Conversor {
     String sa = "";
     int p = 0;
     int numTokens = 0;
-    /***
-     * insertar letra por letra al arbol
-     */
-
 
     /***
      *
      * @param n es la fruta del arbol
+     * @param X es el texto de cada uno de los archivos previamente cambiado para poder obtener su lectura
+     *          indifeentemente del tipo de texto que sea
+     * @param limite es la cantidad de palabras en e texto
      * @static EvaluacionBusq es la lista donde están los elementos
-     * que el usuario quiere buscar
+     *         que el usuario quiere buscar
      *
      * si la lista solo tiene un elemento, hace la validación
      * y si no se llama la función ComOración
@@ -95,7 +94,8 @@ public class Conversor {
 
     /***
      *
-     * @param a
+     * @param a texto previamente cambiado para poder leerlo indiferentemente del tipo de texto que sea
+     * @param stage inicio de una nueva ventana donde estará el texto
      * a es el texto previamete editado para mostrar al usario con la parte econtrada ya subrayada
      *
      */
@@ -128,7 +128,7 @@ public class Conversor {
         VBox.setVgrow(highlightableTextArea, Priority.ALWAYS);
 
         /***
-         * aca se coloca de que letra a que letra se quiere subrayar en cualquier texto
+         * @see HighlightableTextArea con parametros,aca se coloca de que letra a que letra se quiere subrayar en cualquier texto
          *
          */
         highlightableTextArea.highlight(0, 2);

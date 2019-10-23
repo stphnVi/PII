@@ -36,6 +36,11 @@ class HighlightableTextArea extends StackPane {
         return text;
     }
 
+    /***
+     * @method HighlightableTextArea()
+     * encargado de subrayar la palabra
+     */
+
     public HighlightableTextArea() {
         highlight.setFill(Color.RED);
         highlight.setMouseTransparent(true);

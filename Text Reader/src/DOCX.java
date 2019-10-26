@@ -12,6 +12,12 @@ public class DOCX extends Conversor {
     static Lista EvaluacionBusq = new Lista();
     Tree arbol = new Tree();
     Conversor recorrida = new Conversor();
+    /***
+     *
+     * @param a texto DOCX que se leerá,
+     *          se separará por cada palabra y se intriducirá como una
+     *          nueva fruta en el árbol
+     */
 
     public void leer(String a){
         try {
@@ -30,12 +36,10 @@ public class DOCX extends Conversor {
                     arbol.Insertar(numTokens, sa.hashCode());
                 }
 
+
+
                 StringTokenizer leer = new StringTokenizer(Controller.busqueda);
                 String su = "";
-                /***
-                 *
-                 * insertar la frase o palabra que el usuario buscará a una lista enlazada
-                 */
                 while (leer.hasMoreTokens()) {
                     su = leer.nextToken();
                     EvaluacionBusq.addLast(su);

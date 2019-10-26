@@ -36,13 +36,10 @@ class HighlightableTextArea extends StackPane {
         return text;
     }
 
-    /***
-     * @method HighlightableTextArea()
-     * encargado de subrayar la palabra
-     */
+
 
     public HighlightableTextArea() {
-        highlight.setFill(Color.RED);
+        highlight.setFill(Color.TOMATO);
         highlight.setMouseTransparent(true);
         highlight.setBlendMode(BlendMode.DARKEN);
 
@@ -58,6 +55,12 @@ class HighlightableTextArea extends StackPane {
             }
         });
     }
+
+    /***
+     *
+     * @param bounds
+     * límites del subrayado
+     */
 
     private void updateHightlightBounds(Bounds bounds) {
         if (bounds.getWidth() > 0) {
@@ -98,6 +101,15 @@ class HighlightableTextArea extends StackPane {
             });
         }
     }
+
+    /***
+     *
+     * @param startPos
+     * @param endPos
+     *
+     * posicion del subrayado basado en la cantidd de espacios y letras
+     */
+
 
     public void highlight(int startPos, int endPos) {
         highlightInProgress = true;

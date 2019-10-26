@@ -10,7 +10,7 @@ public class Tree {
     /***
      *
      * @param i
-     * i es indice
+     * i es la llave de cada nodo(fruta)
      * @param fruta
      * fruta el nuevo nodo que insertaré
      */
@@ -64,6 +64,12 @@ public class Tree {
 
 
         //CONSTRUCTOR
+
+        /***
+         *
+         * @param indice
+         * inicializar el nodo del árbol
+         */
         public NodoArbol(int indice){
             llave = indice;
             Derecha = null;

@@ -6,12 +6,14 @@ import javafx.stage.Stage;
 
 import java.util.StringTokenizer;
 
-public class Conversor {
+public class Conversor extends Stage{
     static Lista Evaluacion = new Lista();
     int validar = 1;
     String sa = "";
     int p = 0;
     int numTokens = 0;
+    final HighlightableTextArea highlightableTextArea = new HighlightableTextArea();
+
 
     /***
      *
@@ -32,29 +34,39 @@ public class Conversor {
     String sh="";
 
     public void Recorrer(Tree.NodoArbol n, String X, int limite){
+        StringTokenizer st = new StringTokenizer(X);
         String cambio = Evaluacion.ver(0).toString();
 
         if(n!=null) {
+            sa = st.nextToken();
+
             if (limite != n.llave) {
                 if (Evaluacion.tamaño == 1) {
-
                     if (n.Contenido.equals(cambio.hashCode())) {
+
                         System.out.println("contenido de la fruta: "+ n.Contenido +" y el contenido de la busqueda: "+ cambio +"  , son iguales");
                         a = a + n.Contenido;
                     }
+
 
                 } else {
                     CompOracion(n);
                 }
                 Recorrer(n.Izquierda, X, limite);
-                //System.out.println("indice: " + n.llave + "---" + "contenido: " + n.Contenido);
+
+                System.out.println("indice: " + n.llave + "---" + "contenido: " + n.Contenido);
                 Recorrer(n.Derecha, X, limite);
+
+
+
             }else{
 
                 if (n.Contenido.equals(cambio.hashCode())) {
                     System.out.println("contenido de la fruta: "+ n.Contenido +" y el contenido de la busqueda: "+ cambio +"  , son iguales");
                 }
                 System.out.println("terminó el recorrido");
+
+
                 Stage stage = new Stage();
                 try {
                     Armar(X,stage);
@@ -62,6 +74,8 @@ public class Conversor {
                     e.printStackTrace();
                 }
             }
+
+
         }
 
     }
@@ -103,15 +117,7 @@ public class Conversor {
     public void Armar(String a, Stage stage){
 
 
-        StringTokenizer st = new StringTokenizer(a);
-
-        while (st.hasMoreTokens()){
-            sa = st.nextToken();
-            numTokens++;
-            p++;
-        }
-
-        System.out.println(a);
+        //System.out.println(a);
 
         VBox root = new VBox();
         root.setSpacing(10);
@@ -119,13 +125,9 @@ public class Conversor {
         Scene sc = new Scene(root, 600, 600);
         stage.setScene(sc);
         stage.show();
-
-
-        final HighlightableTextArea highlightableTextArea = new HighlightableTextArea();
-        highlightableTextArea.setText(a);
-        highlightableTextArea.getTextArea().setWrapText(true);
-        highlightableTextArea.getTextArea().setStyle("-fx-font-size: 20px;");
         VBox.setVgrow(highlightableTextArea, Priority.ALWAYS);
+
+
 
         /***
          * @see HighlightableTextArea con parametros,aca se coloca de que letra a que letra se quiere subrayar en cualquier texto
@@ -134,7 +136,25 @@ public class Conversor {
         highlightableTextArea.highlight(0, 2);
 
 
-        root.getChildren().addAll(highlightableTextArea);
+
+        StringTokenizer st = new StringTokenizer(a);
+        while (st.hasMoreTokens()){
+            sa = st.nextToken();
+
+            highlightableTextArea.setText(sa);
+            highlightableTextArea.getTextArea().setWrapText(true);
+            highlightableTextArea.getTextArea().setStyle("-fx-font-size: 20px;");
+
+            numTokens++;
+            p++;
+
+            System.out.println(sa + sa.length());
+        }
+
+
+
+
+       root.getChildren().addAll(highlightableTextArea);
 
 
 

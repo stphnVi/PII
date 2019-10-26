@@ -10,6 +10,13 @@ public class TXT extends Conversor {
     String K= "";
     int numTokens = 0;
 
+    /***
+     *
+     * @param a texto TXT que se leerá,
+     *          se separará por cada palabra y se intriducirá como una
+     *          nueva fruta en el árbol
+     */
+
     public void leer(String a) {
         byte b;
 
@@ -28,6 +35,7 @@ public class TXT extends Conversor {
             br = new BufferedReader(fr);
             String s2;
             String s1;
+            //OBSERVARR
             s1 = br.readLine();
 
             K = s1;
@@ -35,9 +43,7 @@ public class TXT extends Conversor {
 
             StringTokenizer st = new StringTokenizer(s1);
 
-            /***
-             *separar las letras de la linea para poder insertar en el arbol
-             */
+
             int i = 0;
             while (st.hasMoreTokens()) {
                 s2 = st.nextToken();
@@ -45,10 +51,7 @@ public class TXT extends Conversor {
                 arbol.Insertar(numTokens, s2.hashCode());
                 i++;
             }
-            /***
-             * Separar letras del texto de busqueda para insertar a la lista y así
-             * buscar palabra por palabra cuando se busca una frase
-             */
+
 
             StringTokenizer leer = new StringTokenizer(Controller.busqueda);
             String sa = "";

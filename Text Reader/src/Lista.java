@@ -1,19 +1,11 @@
 import java.util.Arrays;
 
-/***
- * @see
- * Lista se encaga de contener los nodos y operarlos
- */
+
 public class Lista extends InfoTable {
 
     Nodo cabeza;
     int tamaño;
 
-    /***
-     * @see
-     *  Nodo cabeza, es el primer nodo de
-     *  la lista enlazada
-     */
     public Lista(){
         cabeza = null;
         setTamaño(0);
@@ -35,6 +27,11 @@ public class Lista extends InfoTable {
         }
         tamaño++;
     }
+
+    /***
+     *
+     * @param e nodo que se agregará atras
+     */
 
     void addLast(Object e) {     //arreglar
 
@@ -96,6 +93,14 @@ public class Lista extends InfoTable {
         return temp.VerDato();
     }
 
+    /***
+     *
+     * @param indice
+     * obtener el elemento de la lista que esté en ese indice
+     * @return
+     * retornar dicho valor
+     */
+
     public Nodo getElemento(int indice) {
         Nodo temp = cabeza;
         for (int i = 0; i < indice; i++) {
@@ -106,10 +111,9 @@ public class Lista extends InfoTable {
     }
 
     /***
-     *obtiene el tamaño de la lista
-     * @return
-     * retorna el resultado
      *
+     * @param tamaño
+     * cambiar tamañp de la lista
      */
 
     public void setTamaño(int tamaño) {

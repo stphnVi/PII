@@ -4,6 +4,12 @@ public class Nodo {
     Object dato;
     Nodo prev;
 
+    /***
+     *
+     * @param dato
+     * inicialización del nodo
+     */
+
 
     Nodo(Object dato){
         this.dato = dato;
@@ -15,6 +21,12 @@ public class Nodo {
     {
         return this.siguiente;
     }
+
+    /***
+     *
+     * @param n
+     * nodo que se agregará a la lista
+     */
     void agregar(Nodo n) {
 
         this.siguiente = n;

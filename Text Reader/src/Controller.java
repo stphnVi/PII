@@ -33,13 +33,7 @@ public class Controller {
     int temp1;
     int temp2;
 
-    /***
-     * @ see
-     * en los últimos cambios usé lambda para los eventos
-     *
-     *
-     *
-     */
+
 
     public void ComboOptions(){
         if(temp1 == 0){
@@ -52,10 +46,7 @@ public class Controller {
 
     }
     public void SearchButton(){
-        /***
-         * @see
-         * Cuando el usuario busca, la palabra se envía a la clase conversor
-         */
+
         //LO CAMBIÉ POR LAMBDA
         search.setOnAction(event -> {
             busqueda= txt.getText();
@@ -159,6 +150,7 @@ public class Controller {
                     if (tempPath.endsWith(".txt")){
                         addFile(file.getName(), new TextField());
                         System.out.println("file TXT");
+
                         TXT read= new TXT();
                         read.leer(file.getAbsolutePath());
                     }else if(tempPath.endsWith(".pdf")){

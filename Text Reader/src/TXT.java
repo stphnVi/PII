@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.StringTokenizer;
 
-public class TXT extends Conversor {
+public class TXT {
     Lista EvaluacionBusq = new Lista();
     Tree arbol = new Tree();
     Conversor recorrida = new Conversor();

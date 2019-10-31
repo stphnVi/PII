@@ -1,18 +1,33 @@
-import javafx.geometry.Insets;
+import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.layout.Priority;
+import javafx.scene.control.TitledPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 import javafx.stage.Stage;
 
 import java.util.StringTokenizer;
 
-public class Conversor extends Stage{
+public class Conversor {
     static Lista Evaluacion = new Lista();
     int validar = 1;
     String sa = "";
-    int p = 0;
-    int numTokens = 0;
-    final HighlightableTextArea highlightableTextArea = new HighlightableTextArea();
+    static VBox Ocurrencias = new VBox();
+    TextFlow acomodo = new TextFlow();
+    Stage stage = new Stage();
+    String palabra = "";
+    TitledPane cajaTexto = new TitledPane();
+    int busqOracion = 0;
+
+    public Conversor() {
+        cajaTexto.setPrefSize(100, 300);
+        cajaTexto.setText(Controller.Docu);
+        cajaTexto.setContent(acomodo);
+        stage.setScene(new Scene(Ocurrencias));
+        stage.show();
+    }
 
 
     /***
@@ -30,27 +45,33 @@ public class Conversor extends Stage{
      *
      */
 
-    String a;
-    String sh="";
+    public void Recorrer(Tree.NodoArbol n, String X, int limite) {
 
-    public void Recorrer(Tree.NodoArbol n, String X, int limite){
+
         StringTokenizer st = new StringTokenizer(X);
         String cambio = Evaluacion.ver(0).toString();
 
-        if(n!=null) {
+        if (n != null) {
             sa = st.nextToken();
 
             if (limite != n.llave) {
                 if (Evaluacion.tamaño == 1) {
                     if (n.Contenido.equals(cambio.hashCode())) {
 
-                        System.out.println("contenido de la fruta: "+ n.Contenido +" y el contenido de la busqueda: "+ cambio +"  , son iguales");
-                        a = a + n.Contenido;
+                        System.out.println("contenido de la fruta: " + n.Contenido + " y el contenido de la busqueda: " + cambio + "  , son iguales");
+
+                        Stage stage = new Stage();
+                        palabra = cambio;
+                        try {
+                            ArmarPalabra(X, stage);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                     }
 
 
                 } else {
-                    CompOracion(n);
+                    CompOracion(n, X);
                 }
                 Recorrer(n.Izquierda, X, limite);
 
@@ -58,25 +79,26 @@ public class Conversor extends Stage{
                 Recorrer(n.Derecha, X, limite);
 
 
-
-            }else{
+            } else {
 
                 if (n.Contenido.equals(cambio.hashCode())) {
-                    System.out.println("contenido de la fruta: "+ n.Contenido +" y el contenido de la busqueda: "+ cambio +"  , son iguales");
+                    System.out.println("contenido de la fruta: " + n.Contenido + " y el contenido de la busqueda: " + cambio + "  , son iguales");
                 }
-                System.out.println("terminó el recorrido");
+                if (Evaluacion.tamaño > 1) {
+                    System.out.println("buscar Oración");
+                    ArmarOracion(X);
 
+                } else {
+                    System.out.println("terminó el recorrido");
 
-                Stage stage = new Stage();
-                try {
-                    Armar(X,stage);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    Ocurrencias.getChildren().add(cajaTexto);
+
                 }
             }
 
 
         }
+
 
     }
 
@@ -89,18 +111,24 @@ public class Conversor extends Stage{
      * para hacer las validaciones en orden
      */
 
-    public void CompOracion(Tree.NodoArbol n){
+    public void CompOracion(Tree.NodoArbol n, String X) {
 
-        if(validar == Evaluacion.tamaño+1){
+        busqOracion++;
+        //System.out.println(busqOracion);
 
-        }else {
+        if (validar == Evaluacion.tamaño + 1) {
+
+        } else {
             String cambio = Evaluacion.ver(validar - 1).toString();
 
             if (n.Contenido.equals(cambio.hashCode())) {
-                System.out.println("contenido de la fruta: "+ n.Contenido +" y el contenido de la busqueda: "+ cambio +", son iguales");
+                System.out.println("contenido de la fruta: " + n.Contenido + " y el contenido de la busqueda: " + cambio + ", son iguales");
                 validar++;
+                palabra = cambio;
+
 
             } else {
+
 
             }
         }
@@ -108,57 +136,231 @@ public class Conversor extends Stage{
 
     /***
      *
-     * @param a texto previamente cambiado para poder leerlo indiferentemente del tipo de texto que sea
+     * @param path texto previamente cambiado para poder leerlo indiferentemente del tipo de texto que sea
      * @param stage inicio de una nueva ventana donde estará el texto
      * a es el texto previamete editado para mostrar al usario con la parte econtrada ya subrayada
      *
      */
 
-    public void Armar(String a, Stage stage){
+    public void ArmarPalabra(String path, Stage stage) {
 
 
-        //System.out.println(a);
+        ObservableList textoM = acomodo.getChildren();
 
-        VBox root = new VBox();
-        root.setSpacing(10);
-        root.setPadding(new Insets(10));
-        Scene sc = new Scene(root, 600, 600);
-        stage.setScene(sc);
-        stage.show();
-        VBox.setVgrow(highlightableTextArea, Priority.ALWAYS);
+        StringTokenizer t = new StringTokenizer(path);
+        String word;
 
 
+        while (t.hasMoreTokens()) {
+            word = t.nextToken();
+            Text text = new Text(word);
+            String su;
+            su = word + " ";
+            Text sutext = new Text(su);
 
-        /***
-         * @see HighlightableTextArea con parametros,aca se coloca de que letra a que letra se quiere subrayar en cualquier texto
-         *
-         */
-        highlightableTextArea.highlight(0, 2);
+
+            if (word.equalsIgnoreCase(palabra)) {
+                acomodo.setTextAlignment(TextAlignment.JUSTIFY);
+                // acomodo.setPrefSize(600,300);
+                acomodo.setLineSpacing(5.0);
+                sutext.setFill(Color.TOMATO);
+                sutext.setFont(new Font(30));
+                text.setFont(Font.font(null, FontWeight.BOLD, 20));
+                sutext.setOpacity(0.5);
 
 
+                String finalWord = word;
 
-        StringTokenizer st = new StringTokenizer(a);
-        while (st.hasMoreTokens()){
-            sa = st.nextToken();
+                sutext.addEventFilter(MouseEvent.ANY, new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent t) {
+                        t.consume();
+                    }
+                });
 
-            highlightableTextArea.setText(sa);
-            highlightableTextArea.getTextArea().setWrapText(true);
-            highlightableTextArea.getTextArea().setStyle("-fx-font-size: 20px;");
+                textoM.add(sutext);
 
-            numTokens++;
-            p++;
 
-            System.out.println(sa + sa.length());
+            } else {
+                acomodo.setTextAlignment(TextAlignment.JUSTIFY);
+                acomodo.setPrefSize(600, 300);
+                acomodo.setLineSpacing(5.0);
+                //text.setEditable(false);
+                textoM.add(sutext);
+
+            }
+
+
+            // System.out.println(word);
         }
-
-
-
-
-       root.getChildren().addAll(highlightableTextArea);
-
-
 
     }
 
+    public void ArmarOracion(String path) {
+
+        ObservableList textoM = acomodo.getChildren();
+        StringTokenizer t = new StringTokenizer(path);
+        String word;
+
+        int i = 0;
+        System.out.println(Evaluacion.ver(0));
+        System.out.println(Evaluacion.ver(1));
+        System.out.println(Evaluacion.tamaño);
+        String Temp = "";
+        Lista foodos = new Lista();
+        int s = 0;
+        while (t.hasMoreTokens()) {
+            word = t.nextToken();
+            //System.out.println("TODO---------------------------" + word);
+
+            if (i == Evaluacion.tamaño) {
+                i = 0;
+
+            }
+
+            if (word.hashCode() == Evaluacion.ver(i).hashCode()) {
+
+                int foo = i;
+                int cont = 0;
+
+
+                while (foo <= Evaluacion.tamaño - 1) {
+
+                    //System.out.println("igualdad---------- " + word);
+
+                    if (word.hashCode() == Evaluacion.ver(foo).hashCode()) {
+                        if (foo == Evaluacion.tamaño - 1) {
+                            cont++;
+                            foo++;
+                            //System.out.println("igualdad---------- " + word);
+                            foodos.addLast(word);
+                            s++;
+                        } else {
+                            cont++;
+                            foo++;
+                            //System.out.println("igualdad----------- " + word);
+                            foodos.addLast(word);
+                            word = t.nextToken();
+                            s++;
+                        }
+                    } else {
+                        foo = Evaluacion.tamaño;
+                        int cuenta = 0;
+
+
+
+                       while(cuenta<s){
+                           System.out.println("sin igualdad-- "+foodos.ver(foodos.tamaño-1-cuenta));
+                             cuenta++;
+
+                       }
+
+
+
+
+                        System.out.println("sin igualdad-- "+word);
+
+
+
+
+                    }
+
+                }
+
+                if (cont == Evaluacion.tamaño) {
+                    s=0;
+                    int sal = 0;
+                    while (sal <= Evaluacion.tamaño - 1) {
+                        System.out.println("igualdad (OFICIAL) en: " + Evaluacion.ver(sal));
+                        sal++;
+                    }
+                }
+
+                i++;
+            } else {//System.out.println("salida de la recursion");
+
+                System.out.println("sin igualdad-- " + word);
+                i = 0;
+
+
+            }
+        }
+    }
 }
 
+
+
+
+
+/*
+
+    public void ArmarOracion(String path) {
+
+        ObservableList textoM = acomodo.getChildren();
+        StringTokenizer t = new StringTokenizer(path);
+        String word;
+
+        int i = 0;
+        System.out.println(Evaluacion.ver(0));
+        System.out.println(Evaluacion.ver(1));
+        System.out.println(Evaluacion.tamaño);
+        String Temp="";
+
+        while (t.hasMoreTokens()) {
+            word = t.nextToken();
+            //System.out.println("TODO-------" + word);
+
+            if(i == Evaluacion.tamaño){
+                i=0;
+
+            }
+
+            if (word.hashCode() == Evaluacion.ver(i).hashCode()) {
+
+                int foo = i;
+
+                while(foo<=Evaluacion.tamaño-1){
+
+
+                    if(word.hashCode()== Evaluacion.ver(foo).hashCode()){
+
+                        if(foo == Evaluacion.tamaño-1){
+                            foo++;
+                            System.out.println("igualdad-- " + word);
+                        }else{
+                            foo++;
+                            System.out.println("igualdad-- " + word);
+                            word= t.nextToken();
+                        }
+
+                    }else{
+                        foo = Evaluacion.tamaño;
+                        //word=t.nextToken();
+                        //System.out.println("inicio parecido no hay comparacion alguna"+foo);
+
+
+
+                    }
+
+                }
+
+                //System.out.println("salida de la recursion");
+                i++;
+
+            } else {
+                System.out.println("sin igualdad-- " + word);
+                i=0;
+
+
+            }
+
+
+            // System.out.println(word);
+
+        }
+        }
+
+    }
+
+
+ */

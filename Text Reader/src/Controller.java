@@ -144,6 +144,7 @@ public class Controller {
 
                 FileChooser fil_chooser = new FileChooser();
                 File file = fil_chooser.showOpenDialog(stage);
+                Docu = file.getName();
 
                 if (file != null) {
                     String tempPath = file.getCanonicalPath().toLowerCase();

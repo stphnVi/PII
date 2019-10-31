@@ -6,7 +6,7 @@ import java.io.FileInputStream;
 import java.util.List;
 import java.util.StringTokenizer;
 
-public class DOCX extends Conversor {
+public class DOCX  {
 
 
     static Lista EvaluacionBusq = new Lista();

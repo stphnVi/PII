@@ -24,12 +24,8 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setScene(scene);
 
-        Lista B = new Lista();
-        B.addLast("n");
-        B.addLast("b");
-        //QuickSort A = new QuickSort();
-        B.init_quick(B);
-        B.printList(B);
+
+
 
 
 

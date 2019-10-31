@@ -212,6 +212,10 @@ public class Conversor {
         while (t.hasMoreTokens()) {
             word = t.nextToken();
             //System.out.println("TODO---------------------------" + word);
+            Text textdos = new Text();
+            String su;
+            su = word + " ";
+            Text sutextdos = new Text(su);
 
             if (i == Evaluacion.tamaño) {
                 i = 0;
@@ -258,7 +262,12 @@ public class Conversor {
 
 
 
-                        System.out.println("sin igualdad-- "+word);
+                        System.out.println("sin igualdadada-- "+word);
+                        acomodo.setTextAlignment(TextAlignment.JUSTIFY);
+                        acomodo.setPrefSize(600, 300);
+                        acomodo.setLineSpacing(5.0);
+                        //text.setEditable(false);
+                        textoM.add(sutextdos);
 
 
 
@@ -271,6 +280,31 @@ public class Conversor {
                     s=0;
                     int sal = 0;
                     while (sal <= Evaluacion.tamaño - 1) {
+
+                        sa = Evaluacion.ver(sal) + " ";
+                        Text sutextf = new Text(sa);
+
+                        acomodo.setTextAlignment(TextAlignment.JUSTIFY);
+                        // acomodo.setPrefSize(600,300);
+                        acomodo.setLineSpacing(5.0);
+                        sutextf.setFill(Color.TOMATO);
+                        sutextf.setFont(new Font(30));
+                        text.setFont(Font.font(null, FontWeight.BOLD, 20));
+                        sutextf.setOpacity(0.5);
+
+
+                        String finalWord = word;
+
+                        sutextf.addEventFilter(MouseEvent.ANY, new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent t) {
+                                t.consume();
+                            }
+                        });
+
+                        textoM.add(sutextf);
+
+
                         System.out.println("igualdad (OFICIAL) en: " + Evaluacion.ver(sal));
                         sal++;
                     }
@@ -279,12 +313,18 @@ public class Conversor {
                 i++;
             } else {//System.out.println("salida de la recursion");
 
-                System.out.println("sin igualdad-- " + word);
+                acomodo.setTextAlignment(TextAlignment.JUSTIFY);
+                acomodo.setPrefSize(600, 300);
+                acomodo.setLineSpacing(5.0);
+                //text.setEditable(false);
+                textoM.add(sutextdos);
+                System.out.println("sin igualdahd-- " + word);
                 i = 0;
 
 
             }
         }
+        Ocurrencias.getChildren().add(cajaTexto);
     }
 }
 

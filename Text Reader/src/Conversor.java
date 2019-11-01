@@ -90,7 +90,6 @@ public class Conversor {
 
                 } else {
                     System.out.println("terminó el recorrido");
-
                     Ocurrencias.getChildren().add(cajaTexto);
 
                 }
@@ -147,12 +146,12 @@ public class Conversor {
 
         ObservableList textoM = acomodo.getChildren();
 
-        StringTokenizer t = new StringTokenizer(path);
+        StringTokenizer p = new StringTokenizer(path);
         String word;
 
 
-        while (t.hasMoreTokens()) {
-            word = t.nextToken();
+        while (p.hasMoreTokens()) {
+            word = p.nextToken();
             Text text = new Text(word);
             String su;
             su = word + " ";
@@ -185,13 +184,10 @@ public class Conversor {
                 acomodo.setTextAlignment(TextAlignment.JUSTIFY);
                 acomodo.setPrefSize(600, 300);
                 acomodo.setLineSpacing(5.0);
-                //text.setEditable(false);
                 textoM.add(sutext);
 
             }
 
-
-            // System.out.println(word);
         }
 
     }
@@ -258,16 +254,13 @@ public class Conversor {
                              cuenta++;
 
                        }
-
-
-
-
                         System.out.println("sin igualdadada-- "+word);
                         acomodo.setTextAlignment(TextAlignment.JUSTIFY);
                         acomodo.setPrefSize(600, 300);
                         acomodo.setLineSpacing(5.0);
                         //text.setEditable(false);
-                        textoM.add(sutextdos);
+                        Text sutextres = new Text(word+" ");
+                        textoM.add(sutextres);
 
 
 
@@ -289,11 +282,11 @@ public class Conversor {
                         acomodo.setLineSpacing(5.0);
                         sutextf.setFill(Color.TOMATO);
                         sutextf.setFont(new Font(30));
-                        text.setFont(Font.font(null, FontWeight.BOLD, 20));
+                        //text.setFont(Font.font(null, FontWeight.BOLD, 20));
                         sutextf.setOpacity(0.5);
 
 
-                        String finalWord = word;
+                        String finalWord = sa;
 
                         sutextf.addEventFilter(MouseEvent.ANY, new EventHandler<MouseEvent>() {
                             @Override
@@ -328,79 +321,3 @@ public class Conversor {
     }
 }
 
-
-
-
-
-/*
-
-    public void ArmarOracion(String path) {
-
-        ObservableList textoM = acomodo.getChildren();
-        StringTokenizer t = new StringTokenizer(path);
-        String word;
-
-        int i = 0;
-        System.out.println(Evaluacion.ver(0));
-        System.out.println(Evaluacion.ver(1));
-        System.out.println(Evaluacion.tamaño);
-        String Temp="";
-
-        while (t.hasMoreTokens()) {
-            word = t.nextToken();
-            //System.out.println("TODO-------" + word);
-
-            if(i == Evaluacion.tamaño){
-                i=0;
-
-            }
-
-            if (word.hashCode() == Evaluacion.ver(i).hashCode()) {
-
-                int foo = i;
-
-                while(foo<=Evaluacion.tamaño-1){
-
-
-                    if(word.hashCode()== Evaluacion.ver(foo).hashCode()){
-
-                        if(foo == Evaluacion.tamaño-1){
-                            foo++;
-                            System.out.println("igualdad-- " + word);
-                        }else{
-                            foo++;
-                            System.out.println("igualdad-- " + word);
-                            word= t.nextToken();
-                        }
-
-                    }else{
-                        foo = Evaluacion.tamaño;
-                        //word=t.nextToken();
-                        //System.out.println("inicio parecido no hay comparacion alguna"+foo);
-
-
-
-                    }
-
-                }
-
-                //System.out.println("salida de la recursion");
-                i++;
-
-            } else {
-                System.out.println("sin igualdad-- " + word);
-                i=0;
-
-
-            }
-
-
-            // System.out.println(word);
-
-        }
-        }
-
-    }
-
-
- */

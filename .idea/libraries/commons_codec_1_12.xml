@@ -1,0 +1,19 @@
+<component name="libraryTable">
+  <library name="commons-codec-1.12">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/commons-codec-1.12.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/commons-collections4-4.3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/commons-compress-1.18.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/commons-math3-3.6.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/curvesapi-1.06.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/dom4j-1.6.1-2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/poi-4.1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/poi-ooxml-4.1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/poi-ooxml-schemas-4.1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/poi-scratchpad-4.1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/jar_files/jar_files/xmlbeans-3.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

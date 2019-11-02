@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PII.iml" filepath="$PROJECT_DIR$/PII.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Text Reader/Text Reader.iml" filepath="$PROJECT_DIR$/Text Reader/Text Reader.iml" />
     </modules>
   </component>
 </project>

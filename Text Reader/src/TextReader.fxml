@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root fx:id="root" type="Pane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <AnchorPane prefHeight="606.0" prefWidth="1026.0">
+         <children>
+            <Separator layoutX="267.0" layoutY="-8.0" orientation="VERTICAL" prefHeight="610.0" prefWidth="12.0" />
+            <ScrollPane layoutX="271.0" layoutY="27.0" prefHeight="577.0" prefWidth="823.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="583.0" prefWidth="825.0" style="-fx-background-color: #E5EAF5;">
+                     <children>
+                        <ComboBox fx:id="combo" layoutX="555.0" layoutY="88.0" onShowing="#ComboOptions" prefWidth="150.0" promptText="Type of Text" style="-fx-background-color: #C7CEEA;" visibleRowCount="2" />
+                        <Button fx:id="search" layoutX="556.0" layoutY="126.0" mnemonicParsing="false" onAction="#SearchButton" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #D0BDF4;" text="Search" textAlignment="CENTER" />
+                        <TextField fx:id="txt" layoutX="37.0" layoutY="88.0" prefHeight="31.0" prefWidth="501.0" promptText="Search for...">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                        <ScrollPane layoutX="39.0" layoutY="276.0" prefHeight="255.0" prefWidth="497.0">
+                           <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="259.0" prefWidth="501.0">
+                                 <children>
+                                    <VBox fx:id="name" layoutX="-7.0" prefHeight="241.0" prefWidth="167.0">
+                                       <children>
+                                          <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="182.0" style="-fx-background-color: #C7CEEA;" text="Nombre">
+                                             <font>
+                                                <Font name="System Bold Italic" size="12.0" />
+                                             </font></TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="size" layoutX="160.0" prefHeight="243.0" prefWidth="167.0">
+                                       <children>
+                                          <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="211.0" style="-fx-background-color: #C7CEEA;" text="Tamaño">
+                                             <font>
+                                                <Font name="System Bold Italic" size="12.0" />
+                                             </font></TextField>
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="date" layoutX="327.0" prefHeight="241.0" prefWidth="167.0">
+                                       <children>
+                                          <TextField alignment="CENTER" editable="false" prefHeight="25.0" prefWidth="167.0" style="-fx-background-color: #C7CEEA;" text="Fecha">
+                                             <font>
+                                                <Font name="System Bold Italic" size="12.0" />
+                                             </font></TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </ScrollPane>
+                        <ComboBox fx:id="orderBy" layoutX="555.0" layoutY="276.0" onShown="#OrderOptions" prefWidth="150.0" promptText="Order Search By" style="-fx-background-color: #C7CEEA;" />
+                        <Text fill="#652fd4" layoutX="39.0" layoutY="54.0" smooth="false" stroke="#9d22f5" strokeType="OUTSIDE" strokeWidth="0.5" text=" Text Reader ">
+                           <font>
+                              <Font name="System Bold Italic" size="28.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <MenuBar layoutY="-1.0" prefHeight="30.0" prefWidth="1094.0" style="-fx-background-color: #bfd2de;" AnchorPane.rightAnchor="0.3333333333334849">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+               <padding>
+                  <Insets bottom="2.0" left="10.0" top="2.0" />
+               </padding>
+            </MenuBar>
+            <Button fx:id="UploadFiles" layoutX="20.0" layoutY="543.0" mnemonicParsing="false" onAction="#FileChooserButton" prefHeight="37.0" prefWidth="109.0" style="-fx-background-color: #D0BDF4;" text="Upload Files" />
+            <Separator layoutX="-7.0" layoutY="497.0" prefHeight="1.0" prefWidth="279.0" />
+            <Text fill="#8643d3" layoutX="20.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Uploaded files" underline="true">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="14.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click to upload new files or directories:" wrappingWidth="243.33333333333343">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <ScrollPane layoutX="14.0" layoutY="115.0" prefHeight="361.0" prefWidth="243.0" style="-fx-border-color: #A0B2EB;">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="403.0" prefWidth="241.0">
+                     <children>
+                        <VBox fx:id="files" prefHeight="361.0" prefWidth="235.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+            <Button fx:id="UploadDir" layoutX="147.0" layoutY="543.0" mnemonicParsing="false" onAction="#DirChooserButton" prefHeight="37.0" prefWidth="109.0" style="-fx-background-color: #D0BDF4;" text="Upload Directory" />
+            <Text fontSmoothingType="LCD" layoutX="15.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para eliminar elementos presione &quot;Delete&quot;" wrappingWidth="243.33333333333343">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>
